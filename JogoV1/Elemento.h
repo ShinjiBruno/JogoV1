@@ -1,15 +1,21 @@
-#pragma once
+/*#pragma once
 
-template<class TE>
+namespace Listas{
+	template<class TE>
 
-class Elemento {
-private:
-	Elemento* elemProx;
-	TE* pInfo;
+	class Elemento {
+	private:
+		Elemento* elemProx;
+		TE* pInfo;
 
-public:
-	Elemento();
-	~Elemento();
+	public:
+		Elemento();
+		~Elemento();
 
+		void setInfo(TE info) { pInfo = TE; }
 
-};
+		Elemento* getElem() { return elemProx; }
+
+	};
+}
+*/

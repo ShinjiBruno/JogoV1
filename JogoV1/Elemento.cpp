@@ -1,11 +1,14 @@
-#include "Elemento.h"
+/*#include "Elemento.h"
 
-<template TE>
+template<class TE>
 Elemento::Elemento() {
 	elemProx = NULL;
+	TE = NULL;
 }
 
-<template TE>
+template<class TE>
 Elemento::~Elemento() {
 	elemProx = NULL;
+	TE = NULL;
 }
+*/
