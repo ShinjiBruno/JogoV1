@@ -4,6 +4,8 @@
 using namespace std;
 
 int main() {
+
+	/******TESTE******/
 	Listas::Lista<int> listaEx;
 
 	for (int i = 0; i < 10; i++) {
@@ -11,7 +13,7 @@ int main() {
 		listaEx.pushElem(item);
 	}
 	listaEx.executaLista();
-	
+	/****************/
 
 	return 0;
 }
