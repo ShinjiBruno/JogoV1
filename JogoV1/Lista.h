@@ -19,7 +19,7 @@ namespace Listas {
 
             T* getInfo() { return pInfo; }
 
-            void executa() { cout << *pInfo << " "; }
+            void executa() { cout << *pInfo << " "; } //teste
 
             Elemento* elemProx;
         };
