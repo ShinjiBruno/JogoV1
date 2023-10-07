@@ -1,9 +1,13 @@
 #pragma once
 #include "Lista.h"
 
-class ListaEntidades {
-private:
+namespace Listas {
+	class ListaEntidades {
 
-public:
+	private:
 
-};
+	public:
+
+	};
+
+}

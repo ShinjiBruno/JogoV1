@@ -12,9 +12,8 @@ public:
 	Ente();
 	~Ente();
 
-
-	void executar();
-
 	int getId() { return id; }
+
+	virtual void executar() = 0;
 
 };

@@ -10,6 +10,7 @@ namespace Listas {
         class Elemento {
         private:
             T* pInfo;
+            
 
         public:
             Elemento() : pInfo(NULL), elemProx(NULL) {}
@@ -62,6 +63,6 @@ namespace Listas {
             }
         }
 
-        Elemento* getPPrim() { return pPrim; }
+        //Elemento* getPPrim() { return pPrim; }
     };
 }

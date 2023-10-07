@@ -1,11 +1,11 @@
 #include <iostream>
-#include "Lista.h"
+#include "Jogo.h"
 
 using namespace std;
 
 int main() {
-
-	/******TESTE******/
+	Jogo jogo;
+	/******TESTE-verificar o funcionamento da lista******
 	Listas::Lista<int> listaEx;
 
 	for (int i = 0; i < 10; i++) {
@@ -13,7 +13,7 @@ int main() {
 		listaEx.pushElem(item);
 	}
 	listaEx.executaLista();
-	/****************/
-
+	/******************/
+	
 	return 0;
 }
