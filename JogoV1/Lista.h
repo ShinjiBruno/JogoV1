@@ -1,4 +1,3 @@
-// Lista.h
 #pragma once
 #include <iostream>
 using std::cout;
@@ -20,7 +19,7 @@ namespace Listas {
 
             T* getInfo() { return pInfo; }
 
-            void executa() { cout << *pInfo << " "; } //teste
+            void executa() { pInfo->executa(); }
 
             Elemento* elemProx;
         };
@@ -40,7 +39,7 @@ namespace Listas {
             }
         }
 
-        void pushElem(T* item) {
+        void pushElem(T item) {
             Elemento* temp = new Elemento;
             temp->setInfo(item);
 

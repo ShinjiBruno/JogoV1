@@ -1,10 +1,20 @@
 #pragma once
 #include "Ente.h"
+#include "SFML/Graphics.hpp"	
 
-class Entidade: public Ente {
-protected:
-		
+namespace Entidades {
+	class Entidade : public Ente {
+	protected:
+		sf::Vector2f pos;	//posicao 
+		float velocX;		//incrementar esse valor
+		float velocY;
+		double grav;		//"gravidade"
+		bool neutralizado;
 
-public:
+	public:
+		Entidade();
+		~Entidade();
 
-};
+		virtual void executar() = 0;
+	};
+}

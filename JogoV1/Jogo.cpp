@@ -22,13 +22,10 @@ void Jogo::executarJogo() {
             }
         }
 
-        // Limpe a janela
         window.clear();
 
-        // Desenhe algo na janela (por exemplo, um círculo vermelho)
         window.draw(circ);
 
-        // Atualize a janela
         window.display();
 
 	}
