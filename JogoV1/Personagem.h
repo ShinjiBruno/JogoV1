@@ -2,16 +2,18 @@
 #include "Entidade.h"
 
 namespace Entidades {
-	class Personagem : public Entidade {
-	protected:
-		float danar; //dano que vai causar
-		float vida;
+	namespace Personagens {
+		class Personagem : public Entidade {
+		protected:
+			float danar; //dano que vai causar
+			float vida;
 
 
-	public:
-		Personagem();
-		~Personagem();
+		public:
+			Personagem();
+			~Personagem();
 
-		virtual void executar() = 0;
-	};
+			virtual void executar() = 0;
+		};
+	}
 }

@@ -134,16 +134,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Entidade.cpp" />
+    <ClCompile Include="GerenciadorColisoes.cpp" />
     <ClCompile Include="Jogo.cpp" />
     <ClCompile Include="ListaEntidades.cpp" />
     <ClCompile Include="Origem.cpp" />
     <ClCompile Include="Personagem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GerenciadorColisoes.h" />
+    <ClInclude Include="Obstaculo.h" />
     <ClInclude Include="Ente.h" />
     <ClInclude Include="Entidade.h" />
     <ClInclude Include="GerenciadorGrafico.h" />
     <ClInclude Include="Fase.h" />
+    <ClInclude Include="Inimigo.h" />
+    <ClInclude Include="Jogador.h" />
     <ClInclude Include="Jogo.h" />
     <ClInclude Include="Lista.h" />
     <ClInclude Include="ListaEntidades.h" />
