@@ -19,6 +19,8 @@ namespace Gerenciadores {
 	public:
 		GerenciadorColisoes();
 		~GerenciadorColisoes();
+		
+		void colisaoPersoObst();
 
 		void incluirObstaculos(Obstaculo* obst);
 		void incluirInimigos(Personagem* inim);

@@ -3,14 +3,14 @@
 
 namespace Entidades {
 	namespace Obstaculos {
-		class Obstaculo {
+		class Obstaculo: public Entidade  {
 		protected:
 
 		public:
 			Obstaculo();
 			~Obstaculo();
 
-			virtual void executar() = 0;
+			virtual void executar();
 
 		};
 	}

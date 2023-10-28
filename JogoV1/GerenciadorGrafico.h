@@ -1,14 +1,29 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 
-class GerenciadorGrafico {
-private:
+namespace Gerenciadores {
+	//implementado Singleton
+	class GerenciadorGrafico {
+	private:
+		static GerenciadorGrafico* gGrafInstancia;
+		GerenciadorGrafico();
+		~GerenciadorGrafico();
 
+		sf::RenderWindow* window;
 
-public:
-	GerenciadorGrafico();
-	~GerenciadorGrafico();
+	public:
+		static GerenciadorGrafico* getInstancia() {
+			if (gGrafInstancia == nullptr) {
+				gGrafInstancia = new GerenciadorGrafico();
+			}
+			return gGrafInstancia;
+			
+		}
 
-	void desenhar();
+		sf::RenderWindow* getWindow() { return window; }
 
-};
+		void desenhar(sf::RectangleShape rec) { window->draw(rec); }
+
+	};
+}
+

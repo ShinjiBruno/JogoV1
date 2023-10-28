@@ -2,17 +2,17 @@
 #include "SFML/Graphics/RectangleShape.hpp"
 #include "GerenciadorGrafico.h"
 
-int Ente::id = 0;
+using namespace Gerenciadores;
 
 class Ente {
 protected:
-	sf::RectangleShape figura;
+	sf::RectangleShape figura; //a posição padrão de rectshape é medida a partir do canto superior esquerdo
 	GerenciadorGrafico* gGraf;
 	static int id; //cada obj ente com seu id 
 
 public:
-	Ente() :figura(sf::Vector2f(-1.0f, -1.0f)), gGraf(NULL) { id++; }
-	~Ente() { figura.setOrigin(sf::Vector2f(-1.0f, -1.0f)); gGraf = NULL; }
+	Ente();
+	~Ente();
 
 	int getId() { return id; }
 

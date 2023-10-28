@@ -8,18 +8,18 @@ namespace Listas {
     private:
         class Elemento {
         private:
-            T* pInfo;
+            T pInfo;
             
 
         public:
             Elemento() : pInfo(NULL), elemProx(NULL) {}
             ~Elemento() { pInfo = NULL; elemProx = NULL; }
 
-            void setInfo(T* info) { pInfo = info; }
+            void setInfo(T info) { pInfo = info; }
 
-            T* getInfo() { return pInfo; }
+            T getInfo() { return pInfo; }
 
-            void executa() { pInfo->executa(); }
+            void executa() { pInfo->executar(); }
 
             Elemento* elemProx;
         };

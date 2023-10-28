@@ -7,7 +7,7 @@ namespace Entidades {
 		class Jogador : public Personagem {
 		private:
 			sf::RectangleShape barraVida;
-
+			float pulo;
 		public:
 			Jogador();
 			~Jogador();
