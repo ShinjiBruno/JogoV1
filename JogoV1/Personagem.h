@@ -8,7 +8,6 @@ namespace Entidades {
 			float danar; //dano que vai causar
 			float vida;
 
-
 		public:
 			Personagem();
 			~Personagem();

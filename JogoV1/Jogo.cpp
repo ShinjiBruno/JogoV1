@@ -1,18 +1,13 @@
 #include "Jogo.h"
 
-Jogo::Jogo():
-rec(sf::Vector2f(50.0f, 50.0f))
+Jogo::Jogo()
 {
     window = GerenciadorGrafico::getInstancia();
 
-    rec.setOrigin(sf::Vector2f(rec.getSize().x/2,rec.getSize().y/2));
-    rec.setPosition(sf::Vector2f(50.0f, 50.0f));
-    rec.setFillColor(sf::Color::Red);
-
+    fase.criaJogadores(static_cast<Entidade*>(&jogador1));
     fase.criaInimigos();
     fase.criaObstaculos();
-    fase.criaJogadores(static_cast<Entidade*>(&jogador1));
-
+    
     executarJogo();
 
 }

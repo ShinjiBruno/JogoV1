@@ -12,7 +12,6 @@ private:
 	Jogador jogador1;
 	Fase fase;
 	GerenciadorGrafico* window;
-	sf::RectangleShape rec; //
 	
 public:
 	Jogo();

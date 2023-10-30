@@ -12,7 +12,7 @@ namespace Entidades {
 			Inimigo();
 			~Inimigo();
 
-
+			void moveIni();
 			void executar();
 		};
 	}

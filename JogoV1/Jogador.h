@@ -1,5 +1,4 @@
 #pragma once
-#include "SFML/Graphics.hpp"
 #include "Personagem.h"
 
 namespace Entidades {
@@ -12,7 +11,7 @@ namespace Entidades {
 			Jogador();
 			~Jogador();
 
-
+			void moveJog();
 			void executar();
 		};
 	}

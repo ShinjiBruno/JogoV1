@@ -6,9 +6,9 @@ ListaEntidades::ListaEntidades() {}
 ListaEntidades::~ListaEntidades() {}
 
 void ListaEntidades::incluir(Entidade* ent) {
-	listEnt.pushElem(ent);
+	this->listEnt.pushElem(ent);
 }
 
 void ListaEntidades::percorrer() {
-	listEnt.executaLista();
+	this->listEnt.executaLista();
 }

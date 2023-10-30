@@ -1,5 +1,6 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+#include "SFML/Window/Event.hpp"
 
 namespace Gerenciadores {
 	//implementado Singleton
@@ -10,6 +11,7 @@ namespace Gerenciadores {
 		~GerenciadorGrafico();
 
 		sf::RenderWindow* window;
+		sf::Event* event;
 
 	public:
 		static GerenciadorGrafico* getInstancia() {
@@ -21,7 +23,7 @@ namespace Gerenciadores {
 		}
 
 		sf::RenderWindow* getWindow() { return window; }
-
+		sf::Event* getEvent() { return event; }
 		void desenhar(sf::RectangleShape rec) { window->draw(rec); }
 
 	};

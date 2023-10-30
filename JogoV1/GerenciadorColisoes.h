@@ -1,8 +1,10 @@
 #pragma once
 #include <list>
 #include <vector>
-#include "Personagem.h"
+#include "Jogador.h"
+#include "Inimigo.h"
 #include "Obstaculo.h"
+using namespace Entidades;
 using namespace Entidades::Personagens;
 using namespace Entidades::Obstaculos;
 
@@ -12,8 +14,8 @@ using std::vector;
 namespace Gerenciadores {
 	class GerenciadorColisoes {
 	private:
-		vector<Personagem*> LIs;	//vector de inimigos
-		vector<Personagem*> LJs;	//vector de jogadores 
+		vector<Inimigo*> LIs;	//vector de inimigos
+		vector<Jogador*> LJs;	//vector de jogadores
 		list<Obstaculo*> LOs;		//lista de obstaculos
 
 	public:
@@ -23,8 +25,8 @@ namespace Gerenciadores {
 		void colisaoPersoObst();
 
 		void incluirObstaculos(Obstaculo* obst);
-		void incluirInimigos(Personagem* inim);
-		void incluirJogadores(Personagem* jog);
+		void incluirInimigos(Entidade* inim);
+		void incluirJogadores(Entidade* jog);
 
 	};
 
