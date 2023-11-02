@@ -12,6 +12,7 @@ namespace Gerenciadores {
 
 		sf::RenderWindow* window;
 		sf::Event* event;
+		sf::View* view;
 
 	public:
 		static GerenciadorGrafico* getInstancia() {
@@ -24,6 +25,7 @@ namespace Gerenciadores {
 
 		sf::RenderWindow* getWindow() { return window; }
 		sf::Event* getEvent() { return event; }
+		sf::View* getView() { return view; }
 		void desenhar(sf::RectangleShape rec) { window->draw(rec); }
 
 	};

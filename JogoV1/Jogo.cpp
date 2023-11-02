@@ -2,34 +2,42 @@
 
 Jogo::Jogo()
 {
-    window = GerenciadorGrafico::getInstancia();
+    gerenciaGraf = GerenciadorGrafico::getInstancia();
 
     fase.criaJogadores(static_cast<Entidade*>(&jogador1));
     fase.criaInimigos();
     fase.criaObstaculos();
     
     executarJogo();
-
 }
 Jogo::~Jogo() {
 
 }
 
+void Jogo::configuracaoGraf() {
+    gerenciaGraf->getView()->setCenter(jogador1.getFigura()->getPosition());
+    sf::View* v = gerenciaGraf->getView();
+
+    gerenciaGraf->getWindow()->setView(*v);
+}
+
 void Jogo::executarJogo() {
 	
-	while (window->getWindow()->isOpen()) {
+	while (gerenciaGraf->getWindow()->isOpen()) {
         sf::Event evento;
-        while (window->getWindow()->pollEvent(evento)) {
+        while (gerenciaGraf->getWindow()->pollEvent(evento)) {
             if (evento.type == sf::Event::Closed) {
-                window->getWindow()->close();
+                gerenciaGraf->getWindow()->close();
             }
         }
 
-        window->getWindow()->clear();
+        gerenciaGraf->getWindow()->clear();
+
+        configuracaoGraf();
 
         fase.percorreLista();
 
-        window->getWindow()->display();
+        gerenciaGraf->getWindow()->display();
 
 	}
 

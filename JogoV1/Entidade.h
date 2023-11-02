@@ -7,7 +7,6 @@ namespace Entidades {
 	protected:
 		sf::Vector2f pos;	//posicao 
 		float andar;		//veloc em x
-		float velocY;
 		double grav;		//"gravidade"
 		bool neutralizado;
 		bool chao; //se true, ativa o pulo

@@ -21,7 +21,7 @@ void Fase::criaJogadores(Entidade* jog1, Entidade* jog2) {
 }
 
 void Fase::criaInimigos() {
-	for (int i = 0; i < NUM_JOG; i++) {
+	for (int i = 0; i < 1; i++) {
 		Inimigo* inim = new Inimigo();
 		lista->incluir(static_cast<Entidade*>(inim));
 		gerCol.incluirInimigos(inim);
@@ -36,9 +36,13 @@ void Fase::criaObstaculos() {
 	}
 
 }
-
+void Fase::criaObstFlutuantes() {
+	for(int i = 0; i < )
+}
 
 void Fase::percorreLista() {
 	this->lista->percorrer();
 	gerCol.colisaoPersoObst();
+	gerCol.colisaoJogInim();
+	gerCol.colisaoVisaoInimigo();
 }

@@ -11,12 +11,13 @@ class Jogo {
 private:
 	Jogador jogador1;
 	Fase fase;
-	GerenciadorGrafico* window;
+	GerenciadorGrafico* gerenciaGraf;
 	
 public:
 	Jogo();
 	~Jogo();
 
+	void configuracaoGraf();
 	void executarJogo();
 
 };

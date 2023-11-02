@@ -23,6 +23,8 @@ namespace Gerenciadores {
 		~GerenciadorColisoes();
 		
 		void colisaoPersoObst();
+		void colisaoJogInim();
+		void colisaoVisaoInimigo();
 
 		void incluirObstaculos(Obstaculo* obst);
 		void incluirInimigos(Entidade* inim);

@@ -17,20 +17,27 @@ Jogador::~Jogador() {}
 
 void Jogador::moveJog() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-		printf("Right key pressed\n");
 		figura->move(sf::Vector2f(andar, 0));
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
 		figura->move(sf::Vector2f(-andar, 0));
 	}
-
+	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+		figura->move(sf::Vector2f(0, -andar));
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+		figura->move(sf::Vector2f(0, andar));
+	}*/
+	
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && chao) {
-		figura->move(sf::Vector2f(0, -pulo));
+		tempoLoop = T_LOOP;
 		chao = false;
 	}
-	
-	figura->move(sf::Vector2f(0, grav));
-	//printf("Pos Jogador: x= %f; y = %f\n", figura->getPosition().x, figura->getPosition().y);
+	if (!chao) {
+		float velocY = calculaGrav(0.43f);
+		figura->move(sf::Vector2f(0, -velocY));
+	}
+	else { figura->move(sf::Vector2f(0, grav)); }
 
 }
 
