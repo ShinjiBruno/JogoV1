@@ -1,16 +1,23 @@
 #pragma once
 #include "Entidade.h"
+#include <time.h>
 
+//implementar prototype
 namespace Entidades {
+	
 	namespace Obstaculos {
 		class Obstaculo: public Entidade  {
 		protected:
+			float dano;
 
 		public:
 			Obstaculo();
 			~Obstaculo();
 
-			virtual void executar();
+
+			virtual Obstaculo* clone() = 0;
+			virtual void configuraObstaculo() = 0;
+			virtual void executar() = 0;
 
 		};
 	}

@@ -9,7 +9,7 @@ Inimigo::Inimigo(): detectaJog(false), visao(RAIO_VISAO) {
 	figura->setPosition(sf::Vector2f(175.0f, 200.0f));
 	figura->setFillColor(sf::Color::Blue);
 	grav = 0.1f;
-	andar = 0.05f;
+	andar = 0;//0.05f;
 	visao.setOrigin(figura->getOrigin());
 	visao.setPosition(figura->getPosition());
 	direc = -1;

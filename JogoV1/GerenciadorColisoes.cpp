@@ -95,9 +95,11 @@ void GerenciadorColisoes::colisaoJogInim() {
 void GerenciadorColisoes::colisaoPersoObst() {
 	list<Obstaculo*>::iterator itObst; //iterador obstaculo
 	itObst = this->LOs.begin();
-
+	int i = 0;
 	for (itObst; itObst != this->LOs.end(); ++itObst) {
 		Obstaculo* obstAux = *itObst;
+		//printf("Obstaculo %d: (%f, %f) \n", i, obstAux->getFigura()->getPosition().x, obstAux->getFigura()->getPosition().y);
+		i += 1;
 		//tamanho do obstaculo
 		float obst_size_x = obstAux->getFigura()->getSize().x; //largura do obst
 		float obst_size_y = obstAux->getFigura()->getSize().y; //altura do obst

@@ -27,8 +27,10 @@ namespace Listas {
         Elemento* pPrim;
         Elemento* pAtual;
 
+        int tam;
+
     public:
-        Lista() : pPrim(NULL), pAtual(NULL) {}
+        Lista() : pPrim(NULL), pAtual(NULL), tam(0) {}
         ~Lista() {
             Elemento* temp = pPrim;
             while (temp != nullptr) {
@@ -37,6 +39,7 @@ namespace Listas {
                 delete temp;
                 temp = next;
             }
+            tam = 0;
         }
 
         void pushElem(T item) {
@@ -52,6 +55,7 @@ namespace Listas {
                 pAtual = temp;
                 temp->elemProx = NULL;
             }
+            tam += 1;
         }
 
         void executaLista() {
@@ -61,7 +65,7 @@ namespace Listas {
                 temp = temp->elemProx;
             }
         }
-
+        const int getSize() const { return tam; }
         //Elemento* getPPrim() { return pPrim; }
     };
 }

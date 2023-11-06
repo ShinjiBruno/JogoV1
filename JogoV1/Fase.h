@@ -1,7 +1,10 @@
 #pragma once
 #include "ListaEntidades.h"
 #include "GerenciadorColisoes.h"
-#include "Obstaculo.h"
+#include "GerenciadorPrototipo.h"
+#include "ObstaculoProjetil.h"
+#include "ObstaculoDanoso.h"
+#include "Plataforma.h"
 #include "Inimigo.h"
 #include "stdlib.h"
 
@@ -16,6 +19,7 @@ using namespace Listas;
 namespace Fases {
 	class Fase {
 	protected:
+		GerenciadorPrototipo gerProto;
 		GerenciadorColisoes gerCol;
 		ListaEntidades* lista;
 

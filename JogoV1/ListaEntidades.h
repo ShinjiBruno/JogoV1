@@ -15,6 +15,8 @@ namespace Listas {
 
 		void incluir(Entidade* ent);
 		void percorrer();
+
+		const int getSize() const { return listEnt.getSize(); }
 	};
 
 }

@@ -2,20 +2,17 @@
 using namespace Entidades;
 using namespace Obstaculos;
 
-Obstaculo::Obstaculo()
+Obstaculo::Obstaculo(): dano(0)
 {
-
-	figura->setSize(sf::Vector2f(5000.0f, 50.0f));
-	figura->setOrigin(sf::Vector2f(figura->getSize().x/2, figura->getSize().y/2));
-	figura->setPosition(sf::Vector2f(275.0f, 250.0f));
-	grav = 0;
+	
 }
 
 Obstaculo::~Obstaculo() {
 }
 
+/*
 void Obstaculo::executar() {
 	gGraf->desenhar(*this->figura);
 }
-
+*/
 

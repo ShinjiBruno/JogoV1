@@ -22,13 +22,13 @@ void Jogador::moveJog() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
 		figura->move(sf::Vector2f(-andar, 0));
 	}
-	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 		figura->move(sf::Vector2f(0, -andar));
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
 		figura->move(sf::Vector2f(0, andar));
-	}*/
-	
+	}
+	/*
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && chao) {
 		tempoLoop = T_LOOP;
 		chao = false;
@@ -38,7 +38,7 @@ void Jogador::moveJog() {
 		figura->move(sf::Vector2f(0, -velocY));
 	}
 	else { figura->move(sf::Vector2f(0, grav)); }
-
+	*/
 }
 
 void Jogador::executar() {
