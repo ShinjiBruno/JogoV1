@@ -4,9 +4,9 @@ Jogo::Jogo()
 {
     gerenciaGraf = GerenciadorGrafico::getInstancia();
 
-    fase.criaJogadores(static_cast<Entidade*>(&jogador1));
-    fase.criaInimigos();
-    fase.criaObstaculos();
+    fase1.criaJogadores(static_cast<Entidade*>(&jogador1), static_cast<Entidade*>(&jogador2));
+    fase1.criaInimigos();
+    fase1.criaObstaculos();
     
     executarJogo();
 }
@@ -35,7 +35,7 @@ void Jogo::executarJogo() {
 
         configuracaoGraf();
 
-        fase.percorreLista();
+        fase1.percorreLista();
 
         gerenciaGraf->getWindow()->display();
 

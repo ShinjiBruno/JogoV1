@@ -11,8 +11,7 @@ GerenciadorColisoes::~GerenciadorColisoes() {
 
 /*******************INCLUSAO*********************/
 void GerenciadorColisoes::incluirInimigos(Entidade* inim) {
-	Inimigo* iniAux = new Inimigo();
-
+	Inimigo* iniAux;
 	iniAux = static_cast<Inimigo*>(inim);
 	if (inim != NULL) {
 		LIs.push_back(iniAux);
@@ -21,9 +20,8 @@ void GerenciadorColisoes::incluirInimigos(Entidade* inim) {
 }
 
 void GerenciadorColisoes::incluirJogadores(Entidade* jog) {
-	Jogador* jogAux = new Jogador();
-	
-	jogAux = static_cast<Jogador*>(jog);
+	Jogador* jogAux;
+	jogAux =  static_cast<Jogador*>(jog);
 	if (jogAux) { printf("O typecast foi bem-sucedido, e jog eh uma instancia de Jogador\n"); }
 	else { printf("jog nao eh uma instancia de Jogador\n"); }
 
@@ -48,7 +46,6 @@ void GerenciadorColisoes::colisaoJogInim() {
 		float jog_size_x = this->LJs[i]->getFigura()->getSize().x; //largura do jog
 		float jog_size_y = this->LJs[i]->getFigura()->getSize().y; //altura do jog
 		sf::Vector2f jogPos = this->LJs[i]->getFigura()->getPosition();
-
 		for (int j = 0; j < LIs.size(); j++) {
 			float inim_size_x = this->LIs[j]->getFigura()->getSize().x; //largura do inim
 			float inim_size_y = this->LIs[j]->getFigura()->getSize().y; //altura do inim
@@ -57,33 +54,39 @@ void GerenciadorColisoes::colisaoJogInim() {
 			float delta_x = abs(jogPos.x - inimPos.x);
 			float delta_y = abs(jogPos.y - inimPos.y);
 
+
 			//colisao horizontal
 			if ((delta_x < (jog_size_x / 2) + (inim_size_x / 2)) && (delta_x >= jog_size_x / 2) &&
 				((delta_y < (jog_size_y / 2) + (inim_size_y / 2)))) {
+				printf("Inimigo %d: (%f; %f)\n", j, inimPos.x, inimPos.y);
+				LJs[i]->tomaDano(LIs[j]->getDanar());
+				LJs[i]->setChao(false);
 				if (inimPos.x <= jogPos.x) {
-					this->LJs[j]->getFigura()->move(sf::Vector2f(50.0f, -20.0f));
+					this->LJs[i]->getFigura()->move(sf::Vector2f(50.0f, 0));
 				}
 				if (inimPos.x > jogPos.x) {
-					this->LJs[j]->getFigura()->move(sf::Vector2f(-50.0f, -20.0f));
+					this->LJs[i]->getFigura()->move(sf::Vector2f(-50.0f, 0));
 				}
 			}
 
 			else if (((delta_y < (inim_size_y / 2) + (jog_size_y / 2)) && (delta_y >= jog_size_y / 2)) &&
 				(delta_x < (jog_size_x / 2) + (inim_size_x / 2))) {
+				LJs[i]->tomaDano(LIs[j]->getDanar());
+				LJs[i]->setChao(false);
 				if (jogPos.y <= inimPos.y) {
 					if (jogPos.x <= inimPos.x) {
-						this->LJs[j]->getFigura()->move(sf::Vector2f(-70.0f, -10.0f));
+						this->LJs[i]->getFigura()->move(sf::Vector2f(-70.0f, 0));//-10.0f));
 					}
 					else {
-						this->LJs[j]->getFigura()->move(sf::Vector2f(70.0f, -10.0f));
+						this->LJs[i]->getFigura()->move(sf::Vector2f(70.0f, 0));//-10.0f));
 					}
 				}
 				if (jogPos.y > inimPos.y) {
 					if (jogPos.x <= inimPos.x) {
-						this->LJs[j]->getFigura()->move(sf::Vector2f(-70.0f, -10.0f));
+						this->LJs[j]->getFigura()->move(sf::Vector2f(-70.0f, 0));//-10.0f));
 					}
 					else {
-						this->LJs[j]->getFigura()->move(sf::Vector2f(70.0f, -10.0f));
+						this->LJs[j]->getFigura()->move(sf::Vector2f(70.0f, 0));//-10.0f));
 					}
 				}
 			}
@@ -131,8 +134,9 @@ void GerenciadorColisoes::colisaoPersoObst() {
 				}
 			}
 			//colisao horizontal
-			if ((delta_x < (obst_size_x / 2) + (inim_size_x / 2)) && (delta_x >= obst_size_x / 2)) {
-				if (inimPos.x <= obstPos.y) {
+			if (((delta_x < (obst_size_x / 2) + (inim_size_x / 2)) && (delta_x >= obst_size_x / 2)) &&
+				((delta_y < (obst_size_y / 2) + (inim_size_y / 2)))) {
+				if (inimPos.x <= obstPos.x) {
 					this->LIs[j]->getFigura()->move(sf::Vector2f(-move_x, 0.0f));
 				}
 				if (inimPos.x > obstPos.x) {
@@ -164,12 +168,12 @@ void GerenciadorColisoes::colisaoPersoObst() {
 					this->LJs[j]->getFigura()->move(sf::Vector2f(0.0f, move_y));
 				}
 			}
-			else { LJs[j]->setChao(false); }
+			else {}//LJs[j]->setChao(false); }
 			//colisao horizontal
 			if (((delta_x < (obst_size_x / 2) + (jog_size_x / 2)) && (delta_x >= obst_size_x / 2)) &&
 				((delta_y < (obst_size_y / 2) + (jog_size_y / 2))))
 			{
-				if (jogPos.x <= obstPos.y) {
+				if (jogPos.x <= obstPos.x) {
 					this->LJs[j]->getFigura()->move(sf::Vector2f(-move_x, 0.0f));
 				}
 				if (jogPos.x > obstPos.x) {
@@ -195,10 +199,10 @@ void GerenciadorColisoes::colisaoVisaoInimigo() {
 			float dist = sqrt(dist_x*dist_x + dist_y*dist_y);
 
 			if (dist <= raio) {
-				if (posVisao.x - 1.0f >= posJog.x) { //5.0f eh a tolerancia da visao para nao bugar qnd o jogar estiver exatamnete acima de um inim
+				if (posVisao.x - 5.0f >= posJog.x) { //5.0f eh a tolerancia da visao para nao bugar qnd o jogar estiver exatamnete acima de um inim
 					LIs[i]->setDetectaJog(true, 0);
 				}
-				else if (posVisao.x + 1.0f < posJog.x) {
+				else if (posVisao.x + 5.0f < posJog.x) {
 					LIs[i]->setDetectaJog(true, 1);
 				}
 			}

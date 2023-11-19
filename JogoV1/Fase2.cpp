@@ -1,40 +1,16 @@
-#include "Fase.h"
+#include "Fase2.h"
+
 using namespace Fases;
 
-Fase::Fase() {
-	lista = new ListaEntidades();
-	gerProto.registraPrototipoObst(0, new Plataforma());
-	Obstaculo* plat = gerProto.criaObstaculo(0);
-	lista->incluir(static_cast<Entidade*>(plat));
-	gerCol.incluirObstaculos(plat);
-
-	
-	//criaTorradas();
-
-	/*
-	gerProto.registraPrototipoObst(2, new ObstaculoDanoso());
-	gerProto.registraPrototipoObst(3, new ObstaculoProjetil());*/
-}
-
-Fase::~Fase() {
+Fase2::Fase2() {
 
 }
 
-void Fase::criaJogadores(Entidade* jog1, Entidade* jog2) {
-	if (jog2 == NULL) {
-		lista->incluir(jog1);
-		gerCol.incluirJogadores(jog1);
-	}
-	else {
-		lista->incluir(jog1);
-		lista->incluir(jog2);
-		gerCol.incluirJogadores(jog1);
-		gerCol.incluirJogadores(jog2);
-	}
+Fase2::~Fase2() {
+
 }
 
-
-/*void Fase::criaInimigos() {
+void Fase2::criaInimigos() {
 	int numST = 8 + rand() % 5; //sneaky toast
 	int numSk = 8 + rand() % 5; //skull
 
@@ -60,11 +36,9 @@ void Fase::criaJogadores(Entidade* jog1, Entidade* jog2) {
 	}
 }
 
-void Fase::criaObstaculos() {
-	//cria Plataforma
+void Fase2::criaObstaculos() {
 	int numPlat = 10 + rand() % 11;
 	int numDanoso = 3 + rand() % 3;
-	int numObstProj = 1 + rand() % 2;
 
 	for (int i = 1; i < numPlat; i++) {
 		gerProto.registraPrototipoObst(i, new Plataforma());
@@ -77,40 +51,21 @@ void Fase::criaObstaculos() {
 			gerCol.incluirObstaculos(plat);
 		}
 	}
-
-	printf("Lista tamanho: %d\n", lista->getSize());
-
 	//cria Obstaculo Danoso
 	for (int i = 0; i < numDanoso; i++) {
-		gerProto.registraPrototipoObst(numPlat+i, new Espinho());
-		Obstaculo* danoso = gerProto.criaObstaculo(numPlat+i);
+		gerProto.registraPrototipoObst(numPlat + i, new Espinho());
+		Obstaculo* danoso = gerProto.criaObstaculo(numPlat + i);
 		danoso->configuraObstaculo();
 		if (danoso) {
 			lista->incluir(static_cast<Entidade*>(danoso));
 			gerCol.incluirObstaculos(danoso);
 		}
 	}
-	printf("Lista tamanho: %d\n", lista->getSize());
-
-
-	//cria obstaculo projetil
-	for (int i = 0; i < numObstProj; i++) {
-		gerProto.registraPrototipoObst(numPlat+numDanoso+i, new Slime());
-		Obstaculo* obst_proj = gerProto.criaObstaculo(numPlat+numDanoso+i);
-		obst_proj->configuraObstaculo();
-		if (obst_proj) {
-			lista->incluir(static_cast<Entidade*>(obst_proj));
-			gerCol.incluirObstaculos(obst_proj);
-		}
-	}
-	printf("Lista tamanho: %d\n", lista->getSize());
-
 }
 
-void Fase::percorreLista() {
+void Fase2::percorreLista() {
 	this->lista->percorrer();
 	gerCol.colisaoPersoObst();
 	gerCol.colisaoJogInim();
 	gerCol.colisaoVisaoInimigo();
 }
-*/

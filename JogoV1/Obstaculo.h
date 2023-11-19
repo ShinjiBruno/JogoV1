@@ -1,7 +1,6 @@
 #pragma once
 #include "Entidade.h"
-#include <time.h>
-
+#include <random>
 //implementar prototype
 namespace Entidades {
 	

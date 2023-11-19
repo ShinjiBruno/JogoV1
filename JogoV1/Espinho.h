@@ -3,13 +3,15 @@
 
 namespace Entidades {
 	namespace Obstaculos {
-		class ObstaculoDanoso : public Obstaculo {
+		class Espinho : public Obstaculo {
+		private:
+			static float dif; //diferenca de distancia entre dois obstaculos
 		public :
-			ObstaculoDanoso();
-			~ObstaculoDanoso();
+			Espinho();
+			~Espinho();
 
 			Obstaculo* clone() {
-				return new ObstaculoDanoso(*this);
+				return new Espinho(*this);
 			}
 			void configuraObstaculo();
 			void executar();

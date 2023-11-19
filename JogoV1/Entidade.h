@@ -15,6 +15,7 @@ namespace Entidades {
 		Entidade();
 		~Entidade();
 
+		bool getNeutralizado() { return neutralizado; }
 		void setChao(bool c) { chao = c; }
 		virtual void executar() = 0;
 	};

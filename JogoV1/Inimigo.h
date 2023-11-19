@@ -1,12 +1,13 @@
 #pragma once
 #include "Personagem.h"
+#include <random>
 
 #define RAIO_VISAO 400.0f
 
 namespace Entidades {
 	namespace Personagens {
 		class Inimigo : public Personagem {
-		private:
+		protected:
 			sf::CircleShape visao;
 			bool detectaJog;
 			int direc; //direcao pra perseguir o jogador. 0 == esquerda; 1 == direita; outro valor == parado
@@ -31,7 +32,9 @@ namespace Entidades {
 			const sf::CircleShape getVisao() { return visao; }
 
 			void moveIni();
-			void executar();
+			virtual Inimigo* clone() = 0;
+			virtual void configuraInimigo() = 0;
+			virtual void executar() = 0;
 		};
 	}
 }

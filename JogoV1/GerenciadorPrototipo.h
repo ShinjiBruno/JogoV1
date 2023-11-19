@@ -13,7 +13,7 @@ namespace Gerenciadores {
 		std::map<int, Inimigo*> protoInim;
 		int qnt_obst; //quantidade de prototipo obstaculo criado -> usar para deletar os objetos
 
-	public:s
+	public:
 		GerenciadorPrototipo() : qnt_obst(0) {}
 		~GerenciadorPrototipo() {
 			qnt_obst = 0;

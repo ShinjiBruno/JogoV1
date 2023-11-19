@@ -1,12 +1,11 @@
 #pragma once
 #include "Obstaculo.h"
-#include <random>
 
 namespace Entidades {
 	namespace Obstaculos {
 		class Plataforma : public Obstaculo {
 		private:
-				static int plat_chao;
+				static int qnt;
 				static float dif;
 		public:
 			Plataforma();

@@ -60,11 +60,29 @@ namespace Listas {
 
         void executaLista() {
             Elemento* temp = pPrim;
+            Elemento* tempP = temp->elemProx;
             while (temp != NULL) {
+                /*if (tempP->getInfo()->getNeutralizado()) {
+                    deletaElemento(temp, temp->elemProx);
+                }*/
                 temp->executa();
                 temp = temp->elemProx;
             }
         }
+
+        /*void deletaElemento(Elemento* elem, Elemento* eleP) {
+            if (elem == pPrim && elem->getInfo()->getNeutralizado()) {
+                pPrim = elem->elemProx;
+                elem->elemProx = NULL;
+                delete elem;
+            }
+            else {
+                elem->elemProx = eleP->elemProx;
+                eleP->elemProx = NULL;
+                delete eleP;
+            }
+        }*/
+
         const int getSize() const { return tam; }
         //Elemento* getPPrim() { return pPrim; }
     };
