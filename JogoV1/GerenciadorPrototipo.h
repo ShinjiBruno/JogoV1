@@ -36,13 +36,13 @@ namespace Gerenciadores {
 		void registraPrototipoInim(const int& tipo, Inimigo* proto) {
 			protoInim[tipo] = proto;
 		}
-
+		/*
 		Inimigo* criaInimigo(const int& tipo) {
 			if (protoInim.find(tipo) != protoInim.end()) {
 				return protoInim[tipo]->clone();
 				qnt_obst += 1;
 			}
 			return nullptr;
-		}
+		}*/
 	};
 }

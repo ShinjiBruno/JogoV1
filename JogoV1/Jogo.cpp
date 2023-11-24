@@ -3,10 +3,14 @@
 Jogo::Jogo()
 {
     gerenciaGraf = GerenciadorGrafico::getInstancia();
-
-    fase1.criaJogadores(static_cast<Entidade*>(&jogador1), static_cast<Entidade*>(&jogador2));
+    
+    /*fase1.criaJogadores(static_cast<Entidade*>(&jogador1), static_cast<Entidade*>(&jogador2));
     fase1.criaInimigos();
-    fase1.criaObstaculos();
+    fase1.criaObstaculos();*/
+    
+    fase2.criaJogadores(static_cast<Entidade*>(&jogador1), static_cast<Entidade*>(&jogador2));
+    fase2.criaInimigos();
+    fase2.criaObstaculos();
     
     executarJogo();
 }
@@ -35,7 +39,7 @@ void Jogo::executarJogo() {
 
         configuracaoGraf();
 
-        fase1.percorreLista();
+        fase2.percorreLista();
 
         gerenciaGraf->getWindow()->display();
 

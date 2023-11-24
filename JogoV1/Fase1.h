@@ -1,6 +1,7 @@
 #pragma once
 #include "Fase.h"
 #include "Caveira.h"
+#include "Slime.h"
 
 namespace Fases {
 

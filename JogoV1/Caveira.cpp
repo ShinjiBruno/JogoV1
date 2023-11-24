@@ -20,7 +20,12 @@ void Caveira::configuraInimigo() {
 }
 
 void Caveira::executar() {
-	moveIni();
-	this->gGraf->desenhar(*this->figura);
+	if (!neutralizado) {
+		moveIni();
+		this->gGraf->desenhar(*this->figura);
+	}
+	else {
+		this->figura->setPosition(sf::Vector2f(-1.0f, -1.0f));
 
+	}
 }

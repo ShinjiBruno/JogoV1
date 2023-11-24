@@ -13,6 +13,7 @@ namespace Entidades {
 			Obstaculo();
 			~Obstaculo();
 
+			float getDanar() { return dano; }
 
 			virtual Obstaculo* clone() = 0;
 			virtual void configuraObstaculo() = 0;

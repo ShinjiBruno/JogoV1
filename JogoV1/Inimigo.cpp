@@ -20,13 +20,13 @@ Inimigo::~Inimigo() {}
 void Inimigo::moveIni() {
 	if (detectaJog) {
 		if (direc == 0) {
-			this->figura->move(sf::Vector2f(-andar, 0));
+			figura->move(sf::Vector2f(-andar, 0));
 		}
 		else if (direc == 1) {
-			this->figura->move(sf::Vector2f(andar, 0));
+			figura->move(sf::Vector2f(andar, 0));
 		}
 	}
 
-	this->figura->move(sf::Vector2f(0, grav));
+	figura->move(sf::Vector2f(0, grav));
 	visao.setPosition(figura->getPosition());
 }

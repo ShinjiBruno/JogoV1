@@ -29,6 +29,10 @@ namespace Entidades {
 				}
 			}
 
+			void setPulo(bool b) { pulo = b; }
+			void setTempoLoop(float t) { tempoLoop = t; }
+			float getTempoLoop() { return T_LOOP; }
+			void estadoPadrao();
 			void moveJog1();
 			void moveJog2();
 			void executar();

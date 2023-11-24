@@ -16,8 +16,17 @@ namespace Entidades {
 			Inimigo();
 			~Inimigo();
 
+			void tomaDano(float dano) {
+				if (vida - dano > 0.0f) {
+					vida -= dano;
+				}
+				else {
+					neutralizado = true;
+				}
+			}
+
 			void setDetectaJog(bool detec, int dir) {
-				detectaJog = detec;
+				this->detectaJog = detec;
 				if (detec) {
 					visao.setRadius(2.5f * RAIO_VISAO);
 					direc = dir;
@@ -32,7 +41,6 @@ namespace Entidades {
 			const sf::CircleShape getVisao() { return visao; }
 
 			void moveIni();
-			virtual Inimigo* clone() = 0;
 			virtual void configuraInimigo() = 0;
 			virtual void executar() = 0;
 		};

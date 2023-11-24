@@ -6,6 +6,7 @@ int Plataforma::qnt = 0;
 float Plataforma::dif = 0.0f;
 
 Plataforma::Plataforma(){
+	id = 5;
 	grav = 0;
 
 	figura->setSize(sf::Vector2f(7000.0f, 50.0f));

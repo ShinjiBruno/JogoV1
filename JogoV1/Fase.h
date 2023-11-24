@@ -2,12 +2,9 @@
 #include "ListaEntidades.h"
 #include "GerenciadorColisoes.h"
 #include "GerenciadorPrototipo.h"
-#include "Slime.h"
 #include "Espinho.h"
 #include "Plataforma.h"
 #include "Torrada.h"
-#include "Mago.h"
-#include "Caveira.h"
 #include <stdlib.h>
 
 #define NUM_OBST 3
@@ -32,6 +29,8 @@ namespace Fases {
 		
 		//void criaTorradas();
 		void criaJogadores(Entidade* jog1, Entidade* jog2 = NULL);
-
+		virtual void criaInimigos()=0;
+		virtual void criaObstaculos()=0;
+		virtual void percorreLista()=0;
 	};
 }

@@ -1,7 +1,7 @@
 #include "Entidade.h"
 using namespace Entidades;
 
-Entidade::Entidade():pos(-1.0f,-1.0f), andar(0.0f),
+Entidade::Entidade():pos(-1.0f,-1.0f), andar(0.0f), danar(1.0f),
 neutralizado(false), chao(true)
 {
 	grav = 0.9f;

@@ -27,6 +27,7 @@ namespace Gerenciadores {
 		sf::Event* getEvent() { return event; }
 		sf::View* getView() { return view; }
 		void desenhar(sf::RectangleShape rec) { window->draw(rec); }
+		void desenharTexto(sf::Text text) { window->draw(text); }
 
 	};
 }

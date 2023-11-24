@@ -16,8 +16,8 @@ void Fase1::criaInimigos() {
 
 	int numT = 8 + rand() % 5; //torradas
 	for (int i = 0; i < numT; i++) {
-		gerProto.registraPrototipoInim(i, new Torrada());
-		Inimigo* inim = gerProto.criaInimigo(i);
+		//gerProto.registraPrototipoInim(i, new Torrada());
+		Inimigo* inim = new Torrada();
 		inim->configuraInimigo();
 		if (inim) {
 			lista->incluir(static_cast<Entidade*>(inim));
@@ -26,8 +26,8 @@ void Fase1::criaInimigos() {
 	}
 
 	for (int i = 0; i < numSk; i++) {
-		gerProto.registraPrototipoInim( i, new Caveira());
-		Inimigo* inim = gerProto.criaInimigo(i);
+		//gerProto.registraPrototipoInim( i, new Caveira());
+		Inimigo* inim = new Caveira();
 		inim->configuraInimigo();
 		if (inim) {
 			lista->incluir(static_cast<Entidade*>(inim));
@@ -39,6 +39,8 @@ void Fase1::criaInimigos() {
 void Fase1::criaObstaculos() {
 	int numPlat = 10 + rand() % 11;
 	int numDanoso = 3 + rand() % 3;
+	int numObstProj = 1 + rand() % 2;
+
 
 	for (int i = 1; i < numPlat; i++) {
 		gerProto.registraPrototipoObst(i, new Plataforma());
@@ -59,6 +61,15 @@ void Fase1::criaObstaculos() {
 		if (danoso) {
 			lista->incluir(static_cast<Entidade*>(danoso));
 			gerCol.incluirObstaculos(danoso);
+		}
+	}
+	for (int i = 0; i < numObstProj; i++) {
+		gerProto.registraPrototipoObst(numPlat + numDanoso + i, new Slime());
+		Obstaculo* obst_proj = gerProto.criaObstaculo(numPlat + numDanoso + i);
+		obst_proj->configuraObstaculo();
+		if (obst_proj) {
+			lista->incluir(static_cast<Entidade*>(obst_proj));
+			gerCol.incluirObstaculos(obst_proj);
 		}
 	}
 }

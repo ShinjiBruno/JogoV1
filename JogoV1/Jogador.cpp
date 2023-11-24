@@ -7,7 +7,7 @@ int Jogador::numJog = 0;
 Jogador::Jogador(): pontos(0), jogador(0), nome("") {
 	id = 1;
 	vida = VIDA;
-	danar = 21.0f;
+	danar = 121.0f;
 	if(numJog == 0) {
 		figura->setSize(sf::Vector2f(20.0f, 40.0f));
 		figura->setOrigin(sf::Vector2f(figura->getSize().x / 2, figura->getSize().y / 2));
@@ -110,6 +110,11 @@ void Jogador::moveJog2() {
 
 	barraDano.setPosition(sf::Vector2f(figura->getPosition().x, figura->getPosition().y - figura->getSize().y - 5.0f));
 	barraVida.setPosition(sf::Vector2f(barraDano.getPosition()));
+}
+
+void Jogador::estadoPadrao() {
+	andar = 0.15f;
+	figura->setFillColor(sf::Color::Red);
 }
 
 void Jogador::executar() {
