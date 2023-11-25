@@ -5,7 +5,7 @@ using namespace Personagens;
 
 Mago::Mago(): posVecProj(0) {
 	vecProj = new std::vector<Projetil*>();
-	visao.setRadius(3500.0f);
+	visao.setRadius(RAIO_CHEFAO);
 	id = 8;
 	andar = 0.01f;
 	vida = 550.0f;
@@ -56,7 +56,7 @@ void Mago::atiraProj() {
 	tempoPercorrido = relogio.getElapsedTime();
 	if (tempoPercorrido.asSeconds() >= 4.0f && detectaJog) {
 		Projetil* proj =  (*vecProj)[posVecProj];//new Projetil();
-		proj->Atingiu(false);
+		proj->Atingiu(false);							//"revive" o projetil
 		if (proj->getRaivoso() == 1) {					//se o tiro raivoso for 1, aumenta 50%; se 2, aumenta em dobro
 			danar += danar * 0.5f;
 		}
@@ -77,6 +77,7 @@ void Mago::atiraProj() {
 			(*it)->getFigura()->setPosition(figura->getPosition());
 		}
 		(*it)->executar();
+		
 	}
 	posVecProj += 1;
 }
@@ -88,9 +89,9 @@ void Mago::executar() {
 		this->gGraf->desenhar(*this->figura);
 	}
 	else {
+		relogio.restart();
 		this->figura->setPosition(sf::Vector2f(-10.0f, -10.0f));
-		figura->setSize(sf::Vector2f(0.0f, 0.0f));
-		
+		atiraProj();
 	}
 
 }

@@ -3,6 +3,7 @@
 #include <random>
 
 #define RAIO_VISAO 400.0f
+#define RAIO_CHEFAO 1500.0f
 
 namespace Entidades {
 	namespace Personagens {
@@ -27,16 +28,28 @@ namespace Entidades {
 
 			void setDetectaJog(bool detec, int dir) {
 				this->detectaJog = detec;
-				if (detec) {
-					visao.setRadius(2.5f * RAIO_VISAO);
-					direc = dir;
-				}
+				if (id != 8) {
+					if (detec) {
+						visao.setRadius(2.5f * RAIO_VISAO);
+						direc = dir;
+					}
 
-				else {
-					visao.setRadius(RAIO_VISAO);
-					direc = -1;
+					else {
+						visao.setRadius(RAIO_VISAO);
+						direc = -1;
+					}
 				}
-					
+				else {
+					if (detec) {
+						visao.setRadius(2.5f * RAIO_CHEFAO);
+						direc = dir;
+					}
+
+					else {
+						visao.setRadius(RAIO_CHEFAO);
+						direc = -1;
+					}
+				}
 			}
 			const sf::CircleShape getVisao() { return visao; }
 

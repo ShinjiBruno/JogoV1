@@ -21,7 +21,7 @@ void Projetil::moveProj() { //direc=0 esquerda; direc=1 direita
 		figura->move(sf::Vector2f(andar, 0.0f));
 	}
 	float distAt = abs(figura->getPosition().x - posIni.x);
-	if (distAt >= 3000.0f) {
+	if (distAt >= 1500.0f) {
 		neutralizado = true;
 	}
 }

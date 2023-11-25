@@ -1,27 +1,29 @@
 #pragma once
 #include "Personagem.h"
+#include "Obstaculo.h"
 #include <string>
 #define VIDA 1750.0f
+
+using namespace Entidades;
+using namespace Obstaculos;
 
 namespace Entidades {
 	namespace Personagens {
 		class Jogador : public Personagem {
 		private:
 			static int numJog;
+			int jogador;
 
 			std::string nome;
-			int jogador;
 			sf::RectangleShape barraVida; //barra verde q vai diminuindo conforme o dano que vai lenvando
 			sf::RectangleShape barraDano; //barra verelha 
 			bool pulo;
+			bool afetado; //verifica se esta afetado por algum efeito negativo
 
 		public:
 			Jogador();
 			~Jogador();
-			
-			Jogador operator += (Personagem perso) {
-				this->pontuacao += perso.getPontuacao();
-			}
+		
 
 			void tomaDano(float dano) {
 				if (vida - dano > 0.0f) {
@@ -34,6 +36,8 @@ namespace Entidades {
 				}
 			}
 
+			void efeitoNegativo(int id, Obstaculo* ob); //id dos obstaculos. Para cada caso tem efeito diferente
+			void setAfetado(bool a) { afetado = a; }
 			void setPulo(bool b) { pulo = b; }
 			void setTempoLoop(float t) { tempoLoop = t; }
 			float getTempoLoop() { return T_LOOP; }

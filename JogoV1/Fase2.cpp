@@ -85,7 +85,8 @@ void Fase2::criaObstaculos() {
 void Fase2::percorreLista() {
 	lista->percorrer();
 	gerCol.colisaoProjetil();
-	gerCol.colisaoPersoObst();
 	gerCol.colisaoJogInim();
 	gerCol.colisaoVisaoInimigo();
+	gerCol.colisaoPersoObst();
+
 }

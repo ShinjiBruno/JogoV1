@@ -138,12 +138,18 @@ void GerenciadorColisoes::colisaoPersoObst() {
 			float delta_x = abs(obstPos.x - inimPos.x);
 			float delta_y = abs(obstPos.y - inimPos.y);
 
-			float move_x = abs((inim_size_x / 2) - abs((obst_size_x / 2) - delta_x));
-			float move_y = abs((inim_size_y / 2) - abs((obst_size_y / 2) - delta_y));
+			float move_x;
+			float move_y;
+
+			move_x = abs((obst_size_x / 2) - abs((inimPos.x - inim_size_x / 2) - obstPos.x));
+			move_y = abs((obst_size_y / 2) - abs((inimPos.y - inim_size_y / 2) - obstPos.y));
 
 			//colisao vertical
-			if ((delta_y < (obst_size_y / 2) + (inim_size_y / 2)) && (delta_x < obst_size_x / 2)) {
+			if (((delta_y < (obst_size_y / 2) + (inim_size_y / 2)) && (delta_y >= obst_size_y / 2)) &&
+				(delta_x < (inim_size_x / 2) + (obst_size_x / 2))) {
 				if (inimPos.y <= obstPos.y) {
+					move_y = abs((obst_size_y / 2) - abs((inimPos.y + inim_size_y / 2) - obstPos.y));
+
 					LIs[j]->setChao(true);  //pulo so eh ativado estando sobre uma plataforma
 					this->LIs[j]->getFigura()->move(sf::Vector2f(0.0f, -move_y));
 				}
@@ -152,9 +158,11 @@ void GerenciadorColisoes::colisaoPersoObst() {
 				}
 			}
 			//colisao horizontal
-			if (((delta_x < (obst_size_x / 2) + (inim_size_x / 2)) && (delta_x >= obst_size_x / 2)) &&
-				((delta_y < (obst_size_y / 2) + (inim_size_y / 2)))) {
+			else if (((delta_x < (obst_size_x / 2) + (inim_size_x / 2)) && //(delta_x >= obst_size_x / 2)) &&
+			((delta_y < (obst_size_y / 2) + (inim_size_y / 2)))))
+			{
 				if (inimPos.x <= obstPos.x) {
+					move_x = abs((obst_size_x / 2) - abs((inimPos.x + inim_size_x / 2) - obstPos.x));
 					this->LIs[j]->getFigura()->move(sf::Vector2f(-move_x, 0.0f));
 				}
 				if (inimPos.x > obstPos.x) {
@@ -174,47 +182,50 @@ void GerenciadorColisoes::colisaoPersoObst() {
 			float delta_x = abs(obstPos.x - jogPos.x);
 			float delta_y = abs(obstPos.y - jogPos.y);
 
-			float move_x = abs((jog_size_x/2)- abs((obst_size_x/2) - delta_x));
-			float move_y = abs((jog_size_y / 2) - abs((obst_size_y / 2) - delta_y));
+			//float move_x = abs((jog_size_x/2)- abs((obst_size_x/2) - delta_x));
+			//float move_y = abs((jog_size_y / 2) - abs((obst_size_y / 2) - delta_y));
+			float move_x;
+			float move_y;
+
+			move_x = abs((obst_size_x / 2) - abs((jogPos.x - jog_size_x / 2) - obstPos.x));
+			move_y = abs((obst_size_y / 2) - abs((jogPos.y - jog_size_y / 2) - obstPos.y));
+			
 			//colisao vertical
-			if ((delta_y < (obst_size_y / 2) + (jog_size_y / 2)) && (delta_x < obst_size_x / 2)) {
+			if (((delta_y < (obst_size_y / 2) + (jog_size_y / 2)) && (delta_y >= obst_size_y / 2)) &&
+				(delta_x < (jog_size_x / 2) + (obst_size_x / 2))) {
 				if (jogPos.y <= obstPos.y) {
+					move_y = abs((obst_size_y / 2) - abs((jogPos.y + jog_size_y / 2) - obstPos.y));
+					LJs[j]->setAfetado(true);
 					LJs[j]->setChao(true);  //pulo so eh ativado estando sobre uma plataforma
 					int id = obstAux->getId();
-					if (id == 2) {
-						LJs[j]->tomaDano(obstAux->getDanar());
-						LJs[j]->getFigura()->setFillColor(sf::Color(248, 200, 220));
-					}
-					else if (id == 3) {
-						
-					}
-					else if (id == 4) {
-						//LJs[j]->setAndar(0.05f);
-						//LJs[j]->getFigura()->setFillColor(sf::Color(135, 206, 235));
+					LJs[j]->efeitoNegativo(id, obstAux);
+					printf("Obstaculo id: %d\n", id);
 
-					}
-					else {
+					if (id == 5) {
 						LJs[j]->estadoPadrao();
 					}
-					this->LJs[j]->getFigura()->move(sf::Vector2f(0.0f,  (- 1)*move_y));
+					this->LJs[j]->getFigura()->move(sf::Vector2f(0.0f, (-1) * move_y));
 				}
 				if (jogPos.y > obstPos.y) {
 					this->LJs[j]->getFigura()->move(sf::Vector2f(0.0f, move_y));
 					LJs[j]->setPulo(false);
 				}
 			}
-			else {}//LJs[j]->setChao(false); }
 			//colisao horizontal
-			if (((delta_x < (obst_size_x / 2) + (jog_size_x / 2)) && (delta_x >= obst_size_x / 2)) &&
-				((delta_y < (obst_size_y / 2) + (jog_size_y / 2))))
+			else if (((delta_x < (obst_size_x / 2) + (jog_size_x / 2)) && //(delta_x >= obst_size_x / 2)) &&
+			((delta_y < (obst_size_y / 2) + (jog_size_y / 2)))))
 			{
+				printf("Colisao com a plataforma: (%f, %f)\n", move_x, move_y);
 				if (jogPos.x <= obstPos.x) {
+					move_x = abs((obst_size_x / 2) - abs((jogPos.x + jog_size_x / 2) - obstPos.x));
+
 					this->LJs[j]->getFigura()->move(sf::Vector2f(-move_x, 0.0f));
 				}
 				if (jogPos.x > obstPos.x) {
 					this->LJs[j]->getFigura()->move(sf::Vector2f(move_x, 0.0f));
 				}
 			}
+			
 			
 		}
 	}
@@ -309,9 +320,9 @@ void GerenciadorColisoes::colisaoProjetil() {
 		float proj_size_y = projAux->getFigura()->getSize().y;
 		sf::Vector2f projPos = projAux->getFigura()->getPosition();
 
-		//std::list<Obstaculo*>::iterator it = LOs.begin();
+		std::list<Obstaculo*>::iterator it = LOs.begin();
 		//COLISAO COM OBSTACULO
-		/*while (it != LOs.end()) {
+		while (it != LOs.end()) {
 			Obstaculo* obstAux = *it;
 			//printf("Obstaculo %d: (%f, %f) \n", i, obstAux->getFigura()->getPosition().x, obstAux->getFigura()->getPosition().y);
 			//tamanho do obstaculo
@@ -323,12 +334,12 @@ void GerenciadorColisoes::colisaoProjetil() {
 			float delta_x = abs(obstPos.x - projPos.x);
 			float delta_y = abs(obstPos.y -	projPos.y);
 
-			if (((delta_x < (obst_size_x / 2) + (proj_size_x / 2)) && (delta_x >= obst_size_x / 2)) &&
-				((delta_y < (obst_size_y / 2) + (proj_size_y / 2)))) {
-				
+			if (((delta_x < (obst_size_x / 2) + (proj_size_x / 2)) && //(delta_x >= obst_size_x / 2)) &&
+				((delta_y < (obst_size_y / 2) + (proj_size_y / 2))))){
+				projAux->Atingiu(true);
 			}
-
-		}*/
+			++it;
+		}
 
 		//COLISAO COM JOGADOR
 		for (int j = 0; j < LJs.size(); j++) {

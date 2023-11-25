@@ -7,10 +7,10 @@ Jogo::Jogo()
     /*fase1.criaJogadores(static_cast<Entidade*>(&jogador1), static_cast<Entidade*>(&jogador2));
     fase1.criaInimigos();
     fase1.criaObstaculos();*/
-    
+
+    fase2.criaObstaculos();
     fase2.criaJogadores(static_cast<Entidade*>(&jogador1), static_cast<Entidade*>(&jogador2));
     fase2.criaInimigos();
-    fase2.criaObstaculos();
     
     executarJogo();
 }

@@ -8,7 +8,7 @@ class Ente {
 protected:
 	sf::RectangleShape* figura; //a posição padrão de rectshape é medida a partir do canto superior esquerdo
 	GerenciadorGrafico* gGraf;
-	static int id; //cada obj ente com seu id 
+	int id; //cada obj ente com seu id 
 
 public:
 	Ente();

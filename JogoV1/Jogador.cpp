@@ -1,10 +1,11 @@
 #include "Jogador.h"
 using namespace Entidades;
 using namespace Personagens;
+using namespace Obstaculos;
 
 int Jogador::numJog = 0;
 
-Jogador::Jogador():jogador(0), nome("") {
+Jogador::Jogador():jogador(0), nome(""), afetado(false) {
 	id = 1;
 	vida = VIDA;
 	danar = 121.0f;
@@ -48,20 +49,18 @@ void Jogador::moveJog1() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		figura->move(sf::Vector2f(-andar, 0));
 	}
-	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 		figura->move(sf::Vector2f(0, -andar));
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
 		figura->move(sf::Vector2f(0, andar));
-	}*/
+	}
+	/*
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && chao) {
 		tempoLoop = T_LOOP;
 		chao = false;
 		pulo = true;
 	}
-	
-	
-	
 	if (!chao) {
 		if (pulo) {
 			float velocY = aplicaGrav(1); //opt=1 caso pular
@@ -72,7 +71,7 @@ void Jogador::moveJog1() {
 			figura->move(sf::Vector2f(0, -velocY));
 		}
 	}
-	else { figura->move(sf::Vector2f(0, grav)); }//pulo = false; }
+	else { figura->move(sf::Vector2f(0, grav)); }//pulo = false; }*/
 
 	barraDano.setPosition(sf::Vector2f(figura->getPosition().x, figura->getPosition().y - figura->getSize().y - 5.0f));
 	barraVida.setPosition(sf::Vector2f(barraDano.getPosition()));
@@ -115,6 +114,45 @@ void Jogador::moveJog2() {
 void Jogador::estadoPadrao() {
 	andar = 0.15f;
 	figura->setFillColor(sf::Color::Red);
+}
+
+void Jogador::efeitoNegativo(int id, Obstaculo* ob) {
+	switch(id) {
+	case 2:
+		tomaDano(ob->getDanar());
+		figura->setFillColor(sf::Color(248, 200, 220));
+		break;
+	case 3:
+		if (jogador == 0) {
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+				figura->move(sf::Vector2f(andar-0.05f, 0));
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+				figura->move(sf::Vector2f(-andar+0.05f, 0));
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+				figura->move(sf::Vector2f(0.0f, 0.08f));
+			}
+		}
+		else {
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+				figura->move(sf::Vector2f(andar - 0.05f, 0));
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+				figura->move(sf::Vector2f(-andar + 0.05f, 0));
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+				figura->move(sf::Vector2f(0.0f, 0.08f));
+			}
+		}
+		figura->move(sf::Vector2f(0.0f, 0.01f));
+		break;
+
+	case 4:
+		break;
+
+
+	}
 }
 
 void Jogador::executar() {
