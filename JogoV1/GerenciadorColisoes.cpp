@@ -87,10 +87,10 @@ void GerenciadorColisoes::colisaoJogInim() {
 				if (jogPos.y > inimPos.y) {
 					LJs[i]->tomaDano(LIs[j]->getDanar());
 					if (jogPos.x <= inimPos.x) {
-						this->LJs[i]->getFigura()->move(sf::Vector2f(-70.0f, 0));//-10.0f));
+						this->LJs[i]->getFigura()->move(sf::Vector2f(-70.0f, -5.0f));//-10.0f));
 					}
 					else {
-						this->LJs[i]->getFigura()->move(sf::Vector2f(70.0f, 0));//-10.0f));
+						this->LJs[i]->getFigura()->move(sf::Vector2f(70.0f, -5.0f));//-10.0f));
 					}
 				}
 			}
@@ -102,10 +102,10 @@ void GerenciadorColisoes::colisaoJogInim() {
 				LJs[i]->tomaDano(LIs[j]->getDanar());
 				LJs[i]->setChao(false);
 				if (inimPos.x <= jogPos.x) {
-					this->LJs[i]->getFigura()->move(sf::Vector2f(50.0f, 0));
+					this->LJs[i]->getFigura()->move(sf::Vector2f(50.0f, -5.0f));
 				}
 				if (inimPos.x > jogPos.x) {
-					this->LJs[i]->getFigura()->move(sf::Vector2f(-50.0f, 0));
+					this->LJs[i]->getFigura()->move(sf::Vector2f(-50.0f, -5.0f));
 				}
 			}
 
@@ -246,10 +246,10 @@ void GerenciadorColisoes::colisaoVisaoInimigo() {
 				float dist = sqrt(dist_x * dist_x + dist_y * dist_y);
 
 				if (dist <= raio) {
-					if (posVisao.x - 5.0f >= posJog.x) { //5.0f eh a tolerancia da visao para nao bugar qnd o jogar estiver exatamnete acima de um inim
+					if (posVisao.x - 10.0f >= posJog.x) { //5.0f eh a tolerancia da visao para nao bugar qnd o jogar estiver exatamnete acima de um inim
 						LIs[i]->setDetectaJog(true, 0);
 					}
-					else if (posVisao.x + 5.0f < posJog.x) {
+					else if (posVisao.x + 10.0f < posJog.x) {
 						LIs[i]->setDetectaJog(true, 1);
 					}
 				}
@@ -351,8 +351,21 @@ void GerenciadorColisoes::colisaoProjetil() {
 			float delta_x = abs(jogPos.x - projPos.x);
 			float delta_y = abs(jogPos.y - projPos.y);
 
-			if (((delta_x < (jog_size_x / 2) + (proj_size_x / 2)) && (delta_x >= jog_size_x / 2)) &&
-				((delta_y < (jog_size_y / 2) + (proj_size_y / 2)))) {
+			if (((delta_y < (proj_size_y / 2) + (jog_size_y / 2)) && (delta_y >= proj_size_y / 2)) &&
+			(delta_x < (jog_size_x / 2) + (proj_size_x / 2))) {
+				LJs[j]->tomaDano(projAux->getDanar());
+				projAux->Atingiu(true);
+				if (jogPos.x <= projPos.x) {
+					LJs[j]->getFigura()->move(sf::Vector2f(-10.0f, 1.0f));
+				}
+				if (jogPos.x > projPos.x) {
+					LJs[j]->getFigura()->move(sf::Vector2f(10.0f, 1.0f));
+				}
+			}
+
+			//COLISAO HORIZONTAL
+			else if (((delta_x < (proj_size_x / 2) + (jog_size_x / 2)) &&
+			((delta_y < (proj_size_y / 2) + (jog_size_y / 2))))) {
 				LJs[j]->tomaDano(projAux->getDanar());
 				projAux->Atingiu(true);
 				if (jogPos.x <= projPos.x) {
@@ -364,17 +377,4 @@ void GerenciadorColisoes::colisaoProjetil() {
 			}
 		}
 	}
-	/*if (!LPs.empty()) {
-		std::vector<Projetil*>::iterator it;
-		for (it = LPs.begin(); it != LPs.end();) {
-			if ((*it)->getNeutralizado()) {
-				delete* it;
-				it = LPs.erase(it);
-			}
-			else {
-				(*it)->executar();
-				++it;
-			}
-		}
-	}*/
 }

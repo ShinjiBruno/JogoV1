@@ -12,7 +12,7 @@ namespace Entidades {
 		Projetil();
 		~Projetil();
 
-		void setPosIni(sf::Vector2f p) { posIni = pos; }
+		void setPosIni(sf::Vector2f p) { posIni = p; }
 		void setDirec(int d) { direc = d; }
 		void Atingiu(bool a) { neutralizado = a; }
 

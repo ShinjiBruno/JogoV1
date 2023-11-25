@@ -49,13 +49,13 @@ void Jogador::moveJog1() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		figura->move(sf::Vector2f(-andar, 0));
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 		figura->move(sf::Vector2f(0, -andar));
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
 		figura->move(sf::Vector2f(0, andar));
-	}
-	/*
+	}*/
+	
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && chao) {
 		tempoLoop = T_LOOP;
 		chao = false;
@@ -71,7 +71,7 @@ void Jogador::moveJog1() {
 			figura->move(sf::Vector2f(0, -velocY));
 		}
 	}
-	else { figura->move(sf::Vector2f(0, grav)); }//pulo = false; }*/
+	else { figura->move(sf::Vector2f(0, grav)); }//pulo = false; }
 
 	barraDano.setPosition(sf::Vector2f(figura->getPosition().x, figura->getPosition().y - figura->getSize().y - 5.0f));
 	barraVida.setPosition(sf::Vector2f(barraDano.getPosition()));

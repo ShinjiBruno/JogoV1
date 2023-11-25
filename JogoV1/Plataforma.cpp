@@ -36,7 +36,6 @@ void Plataforma::configuraObstaculo() {
 			this->dif += aleatorio;
 		}
 		else {
-			id = 6;
 			this->figura->setSize(sf::Vector2f(100.0f, 200.0f));
 			this->figura->setOrigin(sf::Vector2f(this->figura->getSize().x / 2, this->figura->getSize().y / 2));
 			this->figura->setPosition(sf::Vector2f((dif + aleatorio), 250.0f - 100.0f));

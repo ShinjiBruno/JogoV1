@@ -63,10 +63,13 @@ void Mago::atiraProj() {
 		else if (proj->getRaivoso() == 2) {
 			danar *= 2;
 		}
-		
+		printf("Mago pos: (%f, %f)\n", figura->getPosition().x, figura->getPosition().y);
+		printf("Proj pos: (%f, %f)\n\n", proj->getFigura()->getPosition().x, proj->getFigura()->getPosition().y);
+
+		proj->setPosIni(figura->getPosition());
 		proj->setDirec(direc);
 		proj->setDanar(danar);
-		vecProj->push_back(proj);
+		//vecProj->push_back(proj);
 		relogio.restart();
 	}
 	std::vector<Projetil*>::iterator it;

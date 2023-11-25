@@ -6,6 +6,7 @@ Projetil::Projetil(): direc(-1) {
 	andar = 0.25f + raivoso;
 	figura->setSize(sf::Vector2f(30.0f, 30.0f));
 	figura->setOrigin(sf::Vector2f(figura->getSize().x/2, figura->getSize().y/2));
+	figura->setFillColor(sf::Color::White);
 	neutralizado = true;
 }
 
@@ -22,12 +23,14 @@ void Projetil::moveProj() { //direc=0 esquerda; direc=1 direita
 	}
 	float distAt = abs(figura->getPosition().x - posIni.x);
 	if (distAt >= 1500.0f) {
+		printf("dist limite: dist = %f\n", distAt);
 		neutralizado = true;
 	}
 }
 
 void Projetil::executar() {
 	if (!neutralizado) {
+		printf("em movimento...\n");
 		moveProj();
 		gGraf->desenhar(*this->figura);
 	}
