@@ -120,7 +120,7 @@ void GerenciadorColisoes::colisaoPersoObst() {
 	for (itObst; itObst != this->LOs.end(); ++itObst) {
 		Obstaculo* obstAux = *itObst;
 		//printf("Obstaculo %d: (%f, %f) \n", i, obstAux->getFigura()->getPosition().x, obstAux->getFigura()->getPosition().y);
-		i += 1;
+
 		//tamanho do obstaculo
 		float obst_size_x = obstAux->getFigura()->getSize().x; //largura do obst
 		float obst_size_y = obstAux->getFigura()->getSize().y; //altura do obst
@@ -169,9 +169,8 @@ void GerenciadorColisoes::colisaoPersoObst() {
 					this->LIs[j]->getFigura()->move(sf::Vector2f(move_x, 0.0f));
 				}
 			}
-			
-
 		}
+
 		//COLISAO ENTRE OBSTACULO E JOGADOR
 		for (int j = 0; j < this->LJs.size(); j++) {
 			sf::Vector2f jogPos = this->LJs[j]->getFigura()->getPosition();
@@ -225,11 +224,8 @@ void GerenciadorColisoes::colisaoPersoObst() {
 					this->LJs[j]->getFigura()->move(sf::Vector2f(move_x, 0.0f));
 				}
 			}
-			
-			
 		}
 	}
-
 }
 
 void GerenciadorColisoes::colisaoVisaoInimigo() {

@@ -43,8 +43,9 @@ void Fase1::criaObstaculos() {
 
 
 	for (int i = 1; i < numPlat; i++) {
-		gerProto.registraPrototipoObst(i, new Plataforma());
-		Obstaculo* plat = gerProto.criaObstaculo(i);
+		//gerProto.registraPrototipoObst(i, new Plataforma());
+		//Obstaculo* plat = gerProto.criaObstaculo(i);
+		Obstaculo* plat = new Plataforma();
 		plat->configuraObstaculo();
 		printf("Plataforma %d - Size: (%f; %f) and Position: (%f, %f) \n", i, plat->getFigura()->getSize().x, plat->getFigura()->getSize().y, plat->getFigura()->getPosition().x, plat->getFigura()->getPosition().y);
 
@@ -55,8 +56,8 @@ void Fase1::criaObstaculos() {
 	}
 	//cria Obstaculo Danoso
 	for (int i = 0; i < numDanoso; i++) {
-		gerProto.registraPrototipoObst(numPlat + i, new Espinho());
-		Obstaculo* danoso = gerProto.criaObstaculo(numPlat + i);
+		//gerProto.registraPrototipoObst(numPlat + i, new Espinho());
+		Obstaculo* danoso = new Espinho();//erProto.criaObstaculo(numPlat + i);
 		danoso->configuraObstaculo();
 		if (danoso) {
 			lista->incluir(static_cast<Entidade*>(danoso));
@@ -64,8 +65,8 @@ void Fase1::criaObstaculos() {
 		}
 	}
 	for (int i = 0; i < numObstProj; i++) {
-		gerProto.registraPrototipoObst(numPlat + numDanoso + i, new Slime());
-		Obstaculo* obst_proj = gerProto.criaObstaculo(numPlat + numDanoso + i);
+		//gerProto.registraPrototipoObst(numPlat + numDanoso + i, new Slime());
+		Obstaculo* obst_proj = new Slime();//gerProto.criaObstaculo(numPlat + numDanoso + i);
 		obst_proj->configuraObstaculo();
 		if (obst_proj) {
 			lista->incluir(static_cast<Entidade*>(obst_proj));
@@ -75,8 +76,9 @@ void Fase1::criaObstaculos() {
 }
 
 void Fase1::percorreLista() {
-	this->lista->percorrer();
-	gerCol.colisaoPersoObst();
+	lista->percorrer();
+	gerCol.colisaoProjetil();
 	gerCol.colisaoJogInim();
 	gerCol.colisaoVisaoInimigo();
+	gerCol.colisaoPersoObst();
 }

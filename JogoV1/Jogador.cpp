@@ -117,7 +117,7 @@ void Jogador::estadoPadrao() {
 }
 
 void Jogador::efeitoNegativo(int id, Obstaculo* ob) {
-	switch(id) {
+	switch (id) {
 	case 2:
 		tomaDano(ob->getDanar());
 		figura->setFillColor(sf::Color(248, 200, 220));
@@ -125,10 +125,10 @@ void Jogador::efeitoNegativo(int id, Obstaculo* ob) {
 	case 3:
 		if (jogador == 0) {
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-				figura->move(sf::Vector2f(andar-0.05f, 0));
+				figura->move(sf::Vector2f(andar - 0.05f, 0));
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-				figura->move(sf::Vector2f(-andar+0.05f, 0));
+				figura->move(sf::Vector2f(-andar + 0.05f, 0));
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 				figura->move(sf::Vector2f(0.0f, 0.08f));
@@ -142,16 +142,17 @@ void Jogador::efeitoNegativo(int id, Obstaculo* ob) {
 				figura->move(sf::Vector2f(-andar + 0.05f, 0));
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-				figura->move(sf::Vector2f(0.0f, 0.08f));
+				figura->move(sf::Vector2f(0.0f, 0.8f));
 			}
 		}
-		figura->move(sf::Vector2f(0.0f, 0.01f));
+		figura->move(sf::Vector2f(0.0f, 0.1f));
 		break;
 
 	case 4:
 		break;
 
-
+	case 5:
+		break;
 	}
 }
 
