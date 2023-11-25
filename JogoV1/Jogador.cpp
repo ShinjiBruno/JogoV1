@@ -4,7 +4,7 @@ using namespace Personagens;
 
 int Jogador::numJog = 0;
 
-Jogador::Jogador(): pontos(0), jogador(0), nome("") {
+Jogador::Jogador():jogador(0), nome("") {
 	id = 1;
 	vida = VIDA;
 	danar = 121.0f;

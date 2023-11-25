@@ -70,7 +70,6 @@ void GerenciadorColisoes::colisaoJogInim() {
 			//VERTICAL
 			if (((delta_y < (inim_size_y / 2) + (jog_size_y / 2)) && (delta_y >= jog_size_y / 2)) &&
 			(delta_x < (jog_size_x / 2) + (inim_size_x / 2))) {
-				LJs[i]->tomaDano(LIs[j]->getDanar());
 				LJs[i]->setChao(false);
 				if (jogPos.y <= inimPos.y) {
 					this->LJs[i]->getFigura()->move(sf::Vector2f(0.0f, -move_y));//-10.0f));
@@ -86,11 +85,12 @@ void GerenciadorColisoes::colisaoJogInim() {
 					}*/
 				}
 				if (jogPos.y > inimPos.y) {
+					LJs[i]->tomaDano(LIs[j]->getDanar());
 					if (jogPos.x <= inimPos.x) {
-						this->LJs[j]->getFigura()->move(sf::Vector2f(-70.0f, 0));//-10.0f));
+						this->LJs[i]->getFigura()->move(sf::Vector2f(-70.0f, 0));//-10.0f));
 					}
 					else {
-						this->LJs[j]->getFigura()->move(sf::Vector2f(70.0f, 0));//-10.0f));
+						this->LJs[i]->getFigura()->move(sf::Vector2f(70.0f, 0));//-10.0f));
 					}
 				}
 			}

@@ -12,6 +12,7 @@ namespace Entidades {
 		protected:
 			float vida;
 			float tempoLoop; //tempo de cada iteracao do loop principal
+			int pontuacao;
 
 		public:
 			Personagem();
@@ -22,6 +23,8 @@ namespace Entidades {
 			float aplicaGrav(int opt);	//opt=1 pulo; opt=2 colisao inimigo; opt=3 ataque inimigo
 										//manda calcular grav conforme situacoes especificas
 			float calculaGrav(float alturaMax);
+			
+			int getPontuacao() { return pontuacao; }
 			virtual void executar() = 0;
 		};
 	}

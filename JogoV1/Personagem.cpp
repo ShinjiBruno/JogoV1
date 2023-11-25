@@ -2,7 +2,7 @@
 using namespace Entidades;
 using namespace Personagens;
 
-Personagem::Personagem():vida(-1.0f), tempoLoop(T_LOOP) {
+Personagem::Personagem():vida(-1.0f), tempoLoop(T_LOOP), pontuacao(0) {
 	
 }
 

@@ -5,17 +5,19 @@ using namespace Personagens;
 
 Mago::Mago(): posVecProj(0) {
 	vecProj = new std::vector<Projetil*>();
-	visao.setRadius(1500.0f);
+	visao.setRadius(3500.0f);
 	id = 8;
-	andar = 0.001f;
+	andar = 0.01f;
 	vida = 550.0f;
 	danar = 250.0f;
+	pontuacao = 500;
 	//fase2 = NULL;
 
 	std::mt19937 rng(std::random_device{}());						//gerador de numeros aleatorios (mto mais eficiente que rand())
 	std::uniform_int_distribution<int> distribution(5, 50);			//numero aleatorio entre 5 e 50 que sera incrementado no dano do mago
 	maldicao = 1.0f*distribution(rng);
 	danar += 1.0f*maldicao;
+	pontuacao += distribution(rng);
 
 	criaProjeteis();
 	relogio.restart();
@@ -50,6 +52,7 @@ void Mago::criaProjeteis() {
 }
 
 void Mago::atiraProj() {
+	posVecProj = (posVecProj >= 4) ? 0 : posVecProj;
 	tempoPercorrido = relogio.getElapsedTime();
 	if (tempoPercorrido.asSeconds() >= 4.0f && detectaJog) {
 		Projetil* proj =  (*vecProj)[posVecProj];//new Projetil();
@@ -75,7 +78,7 @@ void Mago::atiraProj() {
 		}
 		(*it)->executar();
 	}
-	
+	posVecProj += 1;
 }
 
 void Mago::executar() {
@@ -85,8 +88,9 @@ void Mago::executar() {
 		this->gGraf->desenhar(*this->figura);
 	}
 	else {
-		this->figura->setPosition(sf::Vector2f(-1.0f, -1.0f));
-
+		this->figura->setPosition(sf::Vector2f(-10.0f, -10.0f));
+		figura->setSize(sf::Vector2f(0.0f, 0.0f));
+		
 	}
 
 }
