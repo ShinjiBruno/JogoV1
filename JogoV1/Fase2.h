@@ -1,8 +1,8 @@
 #pragma once
 #include "Fase.h"
 #include "Caveira.h"
-#include "Movedica.h"
 #include "Mago.h"
+#include "Animacao.h"
 
 using namespace Entidades;
 using namespace Personagens;

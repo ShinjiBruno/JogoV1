@@ -5,9 +5,17 @@ using namespace Personagens;
 float Caveira::ult_increm = 0.0f;
 
 Caveira::Caveira() {
+
+	textureParado = new sf::Texture();
+	if (textureParado->loadFromFile("Hero-walk.png")) {}
+	animParado = new Animacao(textureParado, sf::Vector2u(4, 1), 10.0f);
+	
+	std::mt19937 rng(std::random_device{}());
+	std::uniform_int_distribution<int> distribution(0, 100);
+
+	odio = distribution(rng);
 	vida = 25.0f;
-	danar = 15.0f;
-	figura->setFillColor(sf::Color::Green);
+	danar = 150.0f + odio;
 }
 
 void Caveira::configuraInimigo() {
@@ -22,6 +30,10 @@ void Caveira::configuraInimigo() {
 void Caveira::executar() {
 	if (!neutralizado) {
 		moveIni();
+		animParado->Atualiza(0, direc);
+		figura->setTexture(textureParado);
+		figura->setTextureRect(animParado->getMolde());
+
 		this->gGraf->desenhar(*this->figura);
 	}
 	else {

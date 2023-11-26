@@ -5,6 +5,7 @@ namespace Entidades {
 	namespace Obstaculos {
 		class Slime : public Obstaculo {
 		private:
+			float gosma;
 			static float dif;
 		public:
 			Slime();

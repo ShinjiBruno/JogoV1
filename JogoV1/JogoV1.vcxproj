@@ -134,6 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animacao.cpp" />
+    <ClCompile Include="GerenciadorMenus.cpp" />
     <ClCompile Include="Mago.cpp" />
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
@@ -147,12 +148,15 @@
     <ClCompile Include="Jogo.cpp" />
     <ClCompile Include="ListaEntidades.cpp" />
     <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="Movedica.cpp" />
+    <ClCompile Include="MenuDeFases.cpp" />
+    <ClCompile Include="MenuNumeroJogadores.cpp" />
+    <ClCompile Include="MenuPause.cpp" />
+    <ClCompile Include="MenuPrincipal.cpp" />
     <ClCompile Include="Obstaculo.cpp" />
     <ClCompile Include="Espinho.cpp" />
     <ClCompile Include="Projetil.cpp" />
     <ClCompile Include="Slime.cpp" />
-    <ClCompile Include="Origem.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Personagem.cpp" />
     <ClCompile Include="Plataforma.cpp" />
     <ClCompile Include="Caveira.cpp" />
@@ -161,13 +165,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animacao.h" />
+    <ClInclude Include="GerenciadorMenus.h" />
     <ClInclude Include="Mago.h" />
     <ClInclude Include="Fase1.h" />
     <ClInclude Include="Fase2.h" />
     <ClInclude Include="GerenciadorColisoes.h" />
     <ClInclude Include="GerenciadorPrototipo.h" />
     <ClInclude Include="Menu.h" />
-    <ClInclude Include="Movedica.h" />
+    <ClInclude Include="MenuDeFases.h" />
+    <ClInclude Include="MenuNumeroJogadores.h" />
+    <ClInclude Include="MenuPause.h" />
+    <ClInclude Include="MenuPrincipal.h" />
     <ClInclude Include="Obstaculo.h" />
     <ClInclude Include="Ente.h" />
     <ClInclude Include="Entidade.h" />
@@ -189,6 +197,14 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="Thalia.otf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="bolaFogo.png" />
+    <Image Include="Hero-walk.png" />
+    <Image Include="jog-andando.png" />
+    <Image Include="jog-parado.png" />
+    <Image Include="mago.png" />
+    <Image Include="sneaky-toast-idle.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

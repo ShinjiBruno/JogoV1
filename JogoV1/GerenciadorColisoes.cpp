@@ -97,8 +97,6 @@ void GerenciadorColisoes::colisaoJogInim() {
 			//colisao horizontal
 			else if ((delta_x < (jog_size_x / 2) + (inim_size_x / 2)) && (delta_x >= jog_size_x / 2) &&
 				((delta_y < (jog_size_y / 2) + (inim_size_y / 2)))) {
-
-				printf("Inimigo %d: (%f; %f)\n", j, inimPos.x, inimPos.y);
 				LJs[i]->tomaDano(LIs[j]->getDanar());
 				LJs[i]->setChao(false);
 				if (inimPos.x <= jogPos.x) {
@@ -114,10 +112,10 @@ void GerenciadorColisoes::colisaoJogInim() {
 }
 
 void GerenciadorColisoes::colisaoPersoObst() {
-	list<Obstaculo*>::iterator itObst; //iterador obstaculo
-	itObst = this->LOs.begin();
+	list<Obstaculo*>::reverse_iterator itObst; //iterador ao contrario do obstaculo (vai do ultimo ao primeiro elemento)
+	itObst = this->LOs.rbegin();
 	int i = 0;
-	for (itObst; itObst != this->LOs.end(); ++itObst) {
+	for (itObst; itObst != this->LOs.rend(); ++itObst) {
 		Obstaculo* obstAux = *itObst;
 		//printf("Obstaculo %d: (%f, %f) \n", i, obstAux->getFigura()->getPosition().x, obstAux->getFigura()->getPosition().y);
 
@@ -188,22 +186,19 @@ void GerenciadorColisoes::colisaoPersoObst() {
 
 			move_x = abs((obst_size_x / 2) - abs((jogPos.x - jog_size_x / 2) - obstPos.x));
 			move_y = abs((obst_size_y / 2) - abs((jogPos.y - jog_size_y / 2) - obstPos.y));
-			
+			int id = obstAux->getId();
+
 			//colisao vertical
+
 			if (((delta_y < (obst_size_y / 2) + (jog_size_y / 2)) && (delta_y >= obst_size_y / 2)) &&
 				(delta_x < (jog_size_x / 2) + (obst_size_x / 2))) {
 				if (jogPos.y <= obstPos.y) {
 					move_y = abs((obst_size_y / 2) - abs((jogPos.y + jog_size_y / 2) - obstPos.y));
-					LJs[j]->setAfetado(true);
 					LJs[j]->setChao(true);  //pulo so eh ativado estando sobre uma plataforma
-					int id = obstAux->getId();
 					LJs[j]->efeitoNegativo(id, obstAux);
-					printf("Obstaculo id: %d\n", id);
-
-					if (id == 5) {
-						LJs[j]->estadoPadrao();
+					if (!LJs[j]->getAfetado()) {
+						this->LJs[j]->getFigura()->move(sf::Vector2f(0.0f, (-1) * move_y));
 					}
-					this->LJs[j]->getFigura()->move(sf::Vector2f(0.0f, (-1) * move_y));
 				}
 				if (jogPos.y > obstPos.y) {
 					this->LJs[j]->getFigura()->move(sf::Vector2f(0.0f, move_y));
@@ -212,18 +207,23 @@ void GerenciadorColisoes::colisaoPersoObst() {
 			}
 			//colisao horizontal
 			else if (((delta_x < (obst_size_x / 2) + (jog_size_x / 2)) && //(delta_x >= obst_size_x / 2)) &&
-			((delta_y < (obst_size_y / 2) + (jog_size_y / 2)))))
+				((delta_y < (obst_size_y / 2) + (jog_size_y / 2)))))
 			{
-				printf("Colisao com a plataforma: (%f, %f)\n", move_x, move_y);
-				if (jogPos.x <= obstPos.x) {
-					move_x = abs((obst_size_x / 2) - abs((jogPos.x + jog_size_x / 2) - obstPos.x));
+				if (!LJs[j]->getAfetado()) {
+					if (jogPos.x <= obstPos.x) {
+						move_x = abs((obst_size_x / 2) - abs((jogPos.x + jog_size_x / 2) - obstPos.x));
 
-					this->LJs[j]->getFigura()->move(sf::Vector2f(-move_x, 0.0f));
-				}
-				if (jogPos.x > obstPos.x) {
-					this->LJs[j]->getFigura()->move(sf::Vector2f(move_x, 0.0f));
+						this->LJs[j]->getFigura()->move(sf::Vector2f(-move_x, 0.0f));
+					}
+					if (jogPos.x > obstPos.x) {
+						this->LJs[j]->getFigura()->move(sf::Vector2f(move_x, 0.0f));
+					}
 				}
 			}
+			
+			/*else {
+				LJs[j]->efeitoNegativo(id, obstAux);
+			}*/
 		}
 	}
 }

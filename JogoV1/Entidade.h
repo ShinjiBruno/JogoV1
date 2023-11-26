@@ -5,7 +5,7 @@
 namespace Entidades {
 	class Entidade : public Ente {
 	protected:
-		sf::Vector2f pos;	//posicao 
+		sf::Texture* textureParado;
 		float andar;		//veloc em x
 		float danar;
 		double grav;		//"gravidade"

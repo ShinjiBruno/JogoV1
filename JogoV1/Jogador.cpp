@@ -6,21 +6,28 @@ using namespace Obstaculos;
 int Jogador::numJog = 0;
 
 Jogador::Jogador():jogador(0), nome(""), afetado(false) {
+	textureParado = new sf::Texture();
+	texAndando = new sf::Texture();
+	if (textureParado->loadFromFile("jog-parado.png")) {} 
+	if(texAndando->loadFromFile("jog-andando.png")) {}
+	animParado = new Animacao(textureParado, sf::Vector2u(1, 1), 1.0f);
+	animAndando = new Animacao(texAndando, sf::Vector2u(8, 1), 10.0f);
+
 	id = 1;
 	vida = VIDA;
 	danar = 121.0f;
 	if(numJog == 0) {
-		figura->setSize(sf::Vector2f(20.0f, 40.0f));
+		figura->setSize(sf::Vector2f(25.0f, 55.0f));
 		figura->setOrigin(sf::Vector2f(figura->getSize().x / 2, figura->getSize().y / 2));
-		figura->setPosition(sf::Vector2f(100.0f, 200.0f));
-		figura->setFillColor(sf::Color::Red);
+		figura->setPosition(sf::Vector2f(100.0f, 185.0f));
+		//figura->setFillColor(sf::Color::Red);
 		jogador = 0;
 	}
 	else {
-		figura->setSize(sf::Vector2f(20.0f, 40.0f));
+		figura->setSize(sf::Vector2f(25.0f, 55.0f));
 		figura->setOrigin(sf::Vector2f(figura->getSize().x / 2, figura->getSize().y / 2));
-		figura->setPosition(sf::Vector2f(140.0f, 200.0f));
-		figura->setFillColor(sf::Color::Red);
+		figura->setPosition(sf::Vector2f(140.0f, 185.0f));
+		//figura->setFillColor(sf::Color::Red);
 		jogador = 1;
 	}
 	barraDano.setSize(sf::Vector2f(50.0f, 15.0f));
@@ -33,7 +40,7 @@ Jogador::Jogador():jogador(0), nome(""), afetado(false) {
 	barraVida.setPosition(barraDano.getPosition());
 	barraVida.setFillColor(sf::Color::Green);
 
-	andar = 0.15f;
+	andar = 0.75f;
 	pulo = false;
 	chao = true;
 	grav = 0.5f;
@@ -44,10 +51,20 @@ Jogador::~Jogador() {}
 
 void Jogador::moveJog1() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-		figura->move(sf::Vector2f(andar, 0));
+		figura->move(sf::Vector2f(andar, 0)); 
+		animParado->Atualiza(0, true);
+		animAndando->Atualiza(0, true);
+		figura->setTexture(texAndando);
+		figura->setTextureRect(animAndando->getMolde());
+		
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		figura->move(sf::Vector2f(-andar, 0));
+		animParado->Atualiza(0, false);
+		animAndando->Atualiza(0, false);
+		figura->setTexture(texAndando);
+		figura->setTextureRect(animAndando->getMolde());
+
 	}
 	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 		figura->move(sf::Vector2f(0, -andar));
@@ -60,6 +77,8 @@ void Jogador::moveJog1() {
 		tempoLoop = T_LOOP;
 		chao = false;
 		pulo = true;
+		afetado = false;
+		estadoPadrao();
 	}
 	if (!chao) {
 		if (pulo) {
@@ -80,9 +99,12 @@ void Jogador::moveJog1() {
 void Jogador::moveJog2() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 		figura->move(sf::Vector2f(andar, 0));
+		animParado->Atualiza(0, true);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		figura->move(sf::Vector2f(-andar, 0));
+		animParado->Atualiza(0, false);
+
 	}
 	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 		figura->move(sf::Vector2f(0, -andar));
@@ -94,6 +116,8 @@ void Jogador::moveJog2() {
 		tempoLoop = T_LOOP;
 		chao = false;
 		pulo = true;
+		afetado = false;
+		estadoPadrao();
 	}
 	if (!chao) {
 		if (pulo) {
@@ -109,61 +133,55 @@ void Jogador::moveJog2() {
 
 	barraDano.setPosition(sf::Vector2f(figura->getPosition().x, figura->getPosition().y - figura->getSize().y - 5.0f));
 	barraVida.setPosition(sf::Vector2f(barraDano.getPosition()));
+
+	figura->setTexture(texAndando);
+	figura->setTextureRect(animParado->getMolde());
 }
 
 void Jogador::estadoPadrao() {
-	andar = 0.15f;
-	figura->setFillColor(sf::Color::Red);
+	grav = 0.5f;
+	andar = 0.2f;
+	figura->setFillColor(sf::Color::White);
+	figura->setTexture(textureParado);
+	figura->setTextureRect(animParado->getMolde());
 }
 
-void Jogador::efeitoNegativo(int id, Obstaculo* ob) {
+void Jogador::efeitoNegativo(int id, Obstaculo* ob) { //TER FUNCAO EFEITO-NEGATIVO PARA CADA OBSTACULO EH MAIS BONITO EM QUESTAO DE CODIGO, JA QUE CADA EFEITO EH PROPRIO DE CADA OBSTACULO (CONSERTAR DPS)
 	switch (id) {
 	case 2:
+		printf("dano: %f\n", ob->getDanar());
+		printf("vida: %f\n", vida);
 		tomaDano(ob->getDanar());
-		figura->setFillColor(sf::Color(248, 200, 220));
-		break;
-	case 3:
-		if (jogador == 0) {
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-				figura->move(sf::Vector2f(andar - 0.05f, 0));
-			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-				figura->move(sf::Vector2f(-andar + 0.05f, 0));
-			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-				figura->move(sf::Vector2f(0.0f, 0.08f));
-			}
-		}
-		else {
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-				figura->move(sf::Vector2f(andar - 0.05f, 0));
-			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				figura->move(sf::Vector2f(-andar + 0.05f, 0));
-			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-				figura->move(sf::Vector2f(0.0f, 0.8f));
-			}
-		}
-		figura->move(sf::Vector2f(0.0f, 0.1f));
-		break;
 
+		figura->setFillColor(sf::Color::Red);
+		break;
 	case 4:
+		figura->setFillColor(sf::Color(173, 216, 230));
+		andar = 0.05f;
 		break;
 
 	case 5:
+		estadoPadrao();
 		break;
 	}
 }
 
 void Jogador::executar() {
-	if (jogador == 0) {
-		moveJog1();
+	if (!neutralizado) {
+		figura->setTexture(textureParado);
+		figura->setTextureRect(animParado->getMolde());
+		if (jogador == 0) {
+			moveJog1();
+		}
+		else {
+			moveJog2();
+		}
+		gGraf->desenhar(*this->figura);
+		gGraf->desenhar(this->barraDano);
+		gGraf->desenhar(this->barraVida);
 	}
 	else {
-		moveJog2();
+		figura->setPosition(sf::Vector2f(-20.f, -20.0f));
 	}
-	gGraf->desenhar(*this->figura);
-	gGraf->desenhar(this->barraDano);
-	gGraf->desenhar(this->barraVida);
+	
 }

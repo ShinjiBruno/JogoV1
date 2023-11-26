@@ -1,78 +1,86 @@
 #pragma once
 
 #include "Ente.h"
-//#include "MenuPrincipal.h"
-//#include "MenuPause.h"
 #include "Texto.h"
+
 #include <vector>
 #include <chrono>
-
 #include <iostream>
+
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Graphics/Text.hpp>
 
 #define TAMANHO_MAX_TEXT 130
 #define TAMANHO_TEXT 50
-#define DISTANCIA_Y 100
-#define OPCOES_MAX 3
-#define OPCOES_MIN 0
+#define DISTANCIA_Y 20
 
 using namespace std;
+
 
 namespace Menus
 {
 	class Menu : public Ente {
-	private:
-		sf::Font font;
-		/*
-		Texto* Jogar;
+	protected:
+		sf::Font* font;
 
+		Texto* titulo;
 		Texto* iniciar;
 		Texto* carregar;
 		Texto* ranking;
-
 		Texto* sair;
-		*/
-		
-		Texto* nomeJogo;
-		Texto* pause;
 
-		Texto* iniciar;
-		Texto* carregar;
-		Texto* ranking;
+		vector<Texto*> listaOpcoes;
 
-		Texto* sair;
-		Texto* voltar;
+		Vector2f posicaoCentro;
+		Vector2f posicaoJanela;
 
-		vector<Texto*> listaOpcoes;//vector<Texto*> listaOpcoes = { nomeJogo, iniciar , carregar, ranking, sair };
+		Vector2u tamJanela;
 
-		int op, i;
-
-
+		int nAlternativas;
+		int opMax;
+		int i;
 		float meioX;
-		float topoY;
 
-		bool comando;
-		bool comecar;
+		static bool principal;
+		static bool comando;
+		static bool comecar;
+		static bool escolherFase;
+		static bool escolherJogadores;
+		static bool escolherNome;
 
 
 		string endereco;
-
-		//float tempo;
-
 
 	public:
 		Menu();
 		~Menu();
 
-		void executar();
-		void executeMenu(bool Principal);
+		virtual void executar() = 0;
+		virtual void selecionar() = 0;
 
-		void desenharMenuPause();
-		void desenharMenuPrincipal();
-		//void desenhar Ranking();
+		void representaSelecionado();
+		//void opSelecionador();
 
-		void opSelecionado();
-		void selecionadorOp();
+		int getNumOp();
+		static bool getComecar();
+		static void setComecar(bool comec);
+		void setSelecionado(int max, int opcao);
+
+		static bool getComando();
+		static bool getEscolherFase();
+		static bool getEscolherJogadores();
+		static bool getEscolherNome();
+		static bool getPrincipal();
+
+		static void setComando(bool pressionado);
+		static void setPrincipal(bool primeiro);
+		static void setEscolherFase(bool escolhido);
+		static void setEscolherJogadores(bool escolhido);
+		static void setEscolherNome(bool escolhido);
+
+		vector<Texto*> getLista();
+
+		GerenciadorGrafico* getGgraf();
+		sf::Font* getFonte();
 	};
 }

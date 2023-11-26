@@ -4,6 +4,10 @@ using namespace Personagens;
 
 
 Mago::Mago(): posVecProj(0) {
+	textureParado = new sf::Texture();
+	if (textureParado->loadFromFile("mago.png")) {}
+	animParado = new Animacao(textureParado, sf::Vector2u(4, 3), 18.0f);
+
 	vecProj = new std::vector<Projetil*>();
 	visao.setRadius(RAIO_CHEFAO);
 	id = 8;
@@ -36,9 +40,9 @@ void Mago::configuraInimigo() {
 	std::uniform_int_distribution<int> distribution(150, 500);
 	int aleatorio = distribution(rng);
 
-	figura->setSize(sf::Vector2f(40.0f, 80.0f));
+	figura->setSize(sf::Vector2f(80.0f, 150.0f));
 	figura->setOrigin(sf::Vector2f(figura->getSize().x / 2, figura->getSize().y / 2));
-	this->figura->setPosition(sf::Vector2f((1500.0f + aleatorio), 200.0f));
+	this->figura->setPosition(sf::Vector2f((1500.0f + aleatorio), 130.0f));
 }
 
 void Mago::criaProjeteis() {
@@ -88,6 +92,10 @@ void Mago::atiraProj() {
 void Mago::executar() {
 	if (!neutralizado) {
 		moveIni();
+		animParado->Atualiza(0, direc);
+		figura->setTexture(textureParado);
+		figura->setTextureRect(animParado->getMolde());
+
 		atiraProj();
 		this->gGraf->desenhar(*this->figura);
 	}

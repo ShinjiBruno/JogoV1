@@ -13,7 +13,7 @@ Espinho::Espinho() {
 	figura->setFillColor(sf::Color::Red);
 
 	grav = 0;
-	dano = 0.01f;
+	dano = 0.3f;
 
 }
 

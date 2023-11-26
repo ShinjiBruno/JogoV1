@@ -1,6 +1,7 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 #include "GerenciadorGrafico.h"
+#include "GerenciadorMenus.h"
 #include "Fase1.h"
 #include "Fase2.h"
 #include "Jogador.h"
@@ -15,12 +16,16 @@ private:
 	Fase1 fase1;
 	Fase2 fase2;
 	GerenciadorGrafico* gerenciaGraf;
+	GerenciadorMenus menu;
 	
 public:
 	Jogo();
 	~Jogo();
 
+	void criaFase();
+
 	void configuracaoGraf();
+
 	void executarJogo();
 
 };

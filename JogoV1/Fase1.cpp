@@ -11,10 +11,10 @@ Fase1::~Fase1() {
 }
 
 void Fase1::criaInimigos() {
-	int numST = 8 + rand() % 5; //sneaky toast
-	int numSk = 8 + rand() % 5; //skull
+	int numST = 20 + rand() % 5; //sneaky toast
+	int numSk = 15 + rand() % 5; //skull
 
-	int numT = 8 + rand() % 5; //torradas
+	int numT = 20 + rand() % 5; //torradas
 	for (int i = 0; i < numT; i++) {
 		//gerProto.registraPrototipoInim(i, new Torrada());
 		Inimigo* inim = new Torrada();

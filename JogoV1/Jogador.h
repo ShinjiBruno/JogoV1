@@ -17,6 +17,7 @@ namespace Entidades {
 			std::string nome;
 			sf::RectangleShape barraVida; //barra verde q vai diminuindo conforme o dano que vai lenvando
 			sf::RectangleShape barraDano; //barra verelha 
+			sf::Texture* texAndando;
 			bool pulo;
 			bool afetado; //verifica se esta afetado por algum efeito negativo
 
@@ -31,7 +32,7 @@ namespace Entidades {
 					vida -= dano;
 				}
 				else {
-					barraVida.setSize(sf::Vector2f(0.1f,barraVida.getSize().y));
+					barraVida.setSize(sf::Vector2f(0.1f, barraVida.getSize().y));
 					neutralizado = true;
 				}
 			}
@@ -40,6 +41,7 @@ namespace Entidades {
 			void setAfetado(bool a) { afetado = a; }
 			void setPulo(bool b) { pulo = b; }
 			void setTempoLoop(float t) { tempoLoop = t; }
+			bool getAfetado() { return afetado; }
 			float getTempoLoop() { return T_LOOP; }
 			void estadoPadrao();
 			void moveJog1();
