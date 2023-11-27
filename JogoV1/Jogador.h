@@ -38,6 +38,7 @@ namespace Entidades {
 			}
 
 			void efeitoNegativo(int id, Obstaculo* ob); //id dos obstaculos. Para cada caso tem efeito diferente
+			void aumentaPontuacao(int ponto) { pontuacao += ponto; }
 			void setAfetado(bool a) { afetado = a; }
 			void setPulo(bool b) { pulo = b; }
 			void setTempoLoop(float t) { tempoLoop = t; }

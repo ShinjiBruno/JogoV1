@@ -1,10 +1,11 @@
 #pragma once
 #include "ListaEntidades.h"
 #include "GerenciadorColisoes.h"
-#include "GerenciadorPrototipo.h"
 #include "Espinho.h"
 #include "Plataforma.h"
 #include "Torrada.h"
+#include "Animacao.h"
+#include "BackGround.h"
 #include <stdlib.h>
 
 #define NUM_OBST 3
@@ -18,16 +19,16 @@ using namespace Listas;
 namespace Fases {
 	class Fase {
 	protected:
-		GerenciadorPrototipo gerProto;
+		BackGround* fundo;
 		GerenciadorColisoes gerCol;
 		ListaEntidades* lista;
-
+		bool acabouJogo;
 	public:
 		Fase();
 		~Fase();
 
-		
 		//void criaTorradas();
+		bool getAcabouJogo() { return acabouJogo; }
 		void criaJogadores(Entidade* jog1, Entidade* jog2 = NULL);
 		virtual void criaInimigos()=0;
 		virtual void criaObstaculos()=0;

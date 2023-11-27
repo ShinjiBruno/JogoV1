@@ -16,6 +16,8 @@ Caveira::Caveira() {
 	odio = distribution(rng);
 	vida = 25.0f;
 	danar = 150.0f + odio;
+	pontuacao = 80.0f + odio;
+
 }
 
 void Caveira::configuraInimigo() {

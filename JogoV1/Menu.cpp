@@ -27,7 +27,7 @@ Menu::Menu() {
 	i = 0;
 
 	//seleciona o meio da janela(funciona apenas no menu principal)
-	meioX = static_cast<float>(tamJanela.x / 2);
+	meioX = static_cast<float>(posicaoCentro.x);
 
 	comando = false;
 
@@ -84,10 +84,11 @@ sf::Font* Menu::getFonte()
 	return font;
 }
 
+
 bool Menu::getComecar() {
 	return comecar;
 }
-
+ 
 void Menu::setComecar(bool comec) {
 	comecar = comec;
 }

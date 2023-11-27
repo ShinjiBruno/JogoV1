@@ -29,8 +29,8 @@ float Personagem::aplicaGrav(int opt) {
 float Personagem::calculaGrav(float alturaMax) {
 	//usar a equacao horaria de posicao: vf = v0 - g.t, onde v0 = sqrt(2.g.H), H eh altura max
 	this->tempoLoop += T_LOOP;
-	float v0 = sqrt(2 * alturaMax);
-	float vf = v0 - (tempoLoop);
+	float v0 = sqrt(2 * alturaMax* 1.5);
+	float vf = v0 - (tempoLoop*1.8);
 	return vf;
 	
 }

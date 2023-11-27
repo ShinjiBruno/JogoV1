@@ -2,12 +2,14 @@
 
 using namespace Menus;
 
+bool MenuPrincipal::rank = false;
+
 MenuPrincipal::MenuPrincipal() {
 	//meio da tela
-	meioX = static_cast<float>(tamJanela.x / 2);
+	meioX = static_cast<float>(posicaoCentro.x);
 
 	//seta as opções, o texto e posição
-	titulo = new Texto("MENU", TAMANHO_MAX_TEXT, meioX, posicaoCentro.y - static_cast<float>(posicaoJanela.y / 2.2), font);
+	titulo = new Texto("CURSED++", TAMANHO_MAX_TEXT, meioX, posicaoCentro.y - static_cast<float>(posicaoJanela.y / 2.2), font);
 	iniciar = new Texto("Jogar", TAMANHO_TEXT, meioX, posicaoCentro.y - static_cast<float>(posicaoJanela.y) / 3 + TAMANHO_TEXT, font);
 	carregar = new Texto("Carregar Jogo", TAMANHO_TEXT, meioX, posicaoCentro.y - static_cast<float>(posicaoJanela.y) / 3 + TAMANHO_TEXT * 2 +DISTANCIA_Y, font);
 	ranking = new Texto("Ranking", TAMANHO_TEXT, meioX, posicaoCentro.y - static_cast<float>(posicaoJanela.y) / 3 + TAMANHO_TEXT * 3 + DISTANCIA_Y * 2, font);
@@ -57,7 +59,10 @@ void MenuPrincipal::selecionar()
 			//carrega o jogo
 		}
 		else if (getLista()[2]->getSelecionado()) {
-			//carrega o menu ranking
+			rank = true;
+			principal = false;
+
+			comando = true;
 		}
 		else if (getLista()[3]->getSelecionado()) {
 
@@ -66,5 +71,14 @@ void MenuPrincipal::selecionar()
 		}
 	}
 
+}
+
+void MenuPrincipal::setRank(bool ran)
+{
+	rank = ran;
+}
+
+bool MenuPrincipal::getRank() {
+	return rank;
 }
 

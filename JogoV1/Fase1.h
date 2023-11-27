@@ -1,11 +1,13 @@
 #pragma once
 #include "Fase.h"
 #include "Caveira.h"
-#include "Slime.h"
+#include "Gosma.h"
 
 namespace Fases {
 
 	class Fase1: public Fase {
+	private:
+		float serenidade; //atributo da Fase1: faz aumentar a velocidade dos inimigos
 	public:
 		Fase1();
 		~Fase1();

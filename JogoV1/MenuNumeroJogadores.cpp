@@ -2,7 +2,7 @@
 
 MenuNumeroJogadores::MenuNumeroJogadores()
 {
-	titulo = new Texto("MENU", TAMANHO_MAX_TEXT, meioX, posicaoCentro.y - static_cast<float>(posicaoJanela.y / 2.2), font);
+	titulo = new Texto("CURSED++", TAMANHO_MAX_TEXT, meioX, posicaoCentro.y - static_cast<float>(posicaoJanela.y / 2.2), font);
 
 	jogadorUm = new Texto("Um Jogador", TAMANHO_TEXT, meioX, posicaoCentro.y - static_cast<float>(posicaoJanela.y) / 3 + TAMANHO_TEXT, font);
 	jogadorDois = new Texto("Dois Jogadores", TAMANHO_TEXT, meioX, posicaoCentro.y - static_cast<float>(posicaoJanela.y) / 3 + TAMANHO_TEXT * 2 + DISTANCIA_Y, font);
@@ -41,22 +41,22 @@ void Menus::MenuNumeroJogadores::selecionar()
 			umJogador = true;
 			doisJogadores = false;
 
+			principal = false;
 			comecar = true;
-
 			comando = true;
 		}
 		else if (getLista()[1]->getSelecionado()) {
 			umJogador = false;
 			doisJogadores = true;
 
+			principal = false;
 			comecar = true;
-
 			comando = true;
 		}
 		else if (getLista()[2]->getSelecionado()) {
 			setEscolherJogadores(false);
+			
 			comecar = false;
-
 			comando = true;
 		}
 	}

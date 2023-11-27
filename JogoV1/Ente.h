@@ -6,9 +6,9 @@ using namespace Gerenciadores;
 
 class Ente {
 protected:
-	sf::RectangleShape* figura; //a posição padrão de rectshape é medida a partir do canto superior esquerdo
+	sf::RectangleShape* figura; 
 	GerenciadorGrafico* gGraf;
-	int id; //cada obj ente com seu id 
+	int id;  
 
 public:
 	Ente();

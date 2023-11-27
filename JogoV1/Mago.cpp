@@ -12,7 +12,7 @@ Mago::Mago(): posVecProj(0) {
 	visao.setRadius(RAIO_CHEFAO);
 	id = 8;
 	andar = 0.01f;
-	vida = 550.0f;
+	vida = 3550.0f;
 	danar = 250.0f;
 	pontuacao = 500;
 	//fase2 = NULL;
@@ -58,7 +58,7 @@ void Mago::criaProjeteis() {
 void Mago::atiraProj() {
 	posVecProj = (posVecProj >= 4) ? 0 : posVecProj;
 	tempoPercorrido = relogio.getElapsedTime();
-	if (tempoPercorrido.asSeconds() >= 4.0f && detectaJog) {
+	if (tempoPercorrido.asSeconds() >= 3.0f && detectaJog) {
 		Projetil* proj =  (*vecProj)[posVecProj];//new Projetil();
 		proj->Atingiu(false);							//"revive" o projetil
 		if (proj->getRaivoso() == 1) {					//se o tiro raivoso for 1, aumenta 50%; se 2, aumenta em dobro

@@ -1,13 +1,11 @@
 #include "Fase.h"
 using namespace Fases;
 
-Fase::Fase() {
+Fase::Fase(): acabouJogo(false) {
 	lista = new ListaEntidades();
-	gerProto.registraPrototipoObst(0, new Plataforma());
-	Obstaculo* plat = gerProto.criaObstaculo(0);
+	Obstaculo* plat = new Plataforma();
 	lista->incluir(static_cast<Entidade*>(plat));
 	gerCol.incluirObstaculos(plat);
-
 	
 	//criaTorradas();
 

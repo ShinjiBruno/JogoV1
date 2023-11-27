@@ -1,8 +1,9 @@
 #include "MenuDeFases.h"
 
 MenuDeFases::MenuDeFases() {
+	meioX = static_cast<float>(posicaoCentro.x);
 
-	titulo = new Texto("MENU", TAMANHO_MAX_TEXT, meioX, posicaoCentro.y - static_cast<float>(posicaoJanela.y / 2.2), font);
+	titulo = new Texto("CURSED++", TAMANHO_MAX_TEXT, meioX, posicaoCentro.y - static_cast<float>(posicaoJanela.y / 2.2), font);
 
 	fase1 = new Texto("Fase 1", TAMANHO_TEXT, meioX, posicaoCentro.y - static_cast<float>(posicaoJanela.y) / 3 + TAMANHO_TEXT, font);
 	fase2 = new Texto("Fase 2", TAMANHO_TEXT, meioX, posicaoCentro.y - static_cast<float>(posicaoJanela.y) / 3 + TAMANHO_TEXT * 2 + DISTANCIA_Y, font);

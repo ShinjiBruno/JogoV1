@@ -6,12 +6,15 @@ using namespace Obstaculos;
 int Jogador::numJog = 0;
 
 Jogador::Jogador():jogador(0), nome(""), afetado(false) {
+	pontuacao = 0;
+
 	textureParado = new sf::Texture();
 	texAndando = new sf::Texture();
 	if (textureParado->loadFromFile("jog-parado.png")) {} 
 	if(texAndando->loadFromFile("jog-andando.png")) {}
 	animParado = new Animacao(textureParado, sf::Vector2u(1, 1), 1.0f);
 	animAndando = new Animacao(texAndando, sf::Vector2u(8, 1), 10.0f);
+	animParado->Atualiza(0, true);
 
 	id = 1;
 	vida = VIDA;
@@ -100,10 +103,16 @@ void Jogador::moveJog2() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 		figura->move(sf::Vector2f(andar, 0));
 		animParado->Atualiza(0, true);
+		animAndando->Atualiza(0, true);
+		figura->setTexture(texAndando);
+		figura->setTextureRect(animAndando->getMolde());
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		figura->move(sf::Vector2f(-andar, 0));
 		animParado->Atualiza(0, false);
+		animAndando->Atualiza(0, false);
+		figura->setTexture(texAndando);
+		figura->setTextureRect(animAndando->getMolde());
 
 	}
 	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
@@ -134,13 +143,11 @@ void Jogador::moveJog2() {
 	barraDano.setPosition(sf::Vector2f(figura->getPosition().x, figura->getPosition().y - figura->getSize().y - 5.0f));
 	barraVida.setPosition(sf::Vector2f(barraDano.getPosition()));
 
-	figura->setTexture(texAndando);
-	figura->setTextureRect(animParado->getMolde());
 }
 
 void Jogador::estadoPadrao() {
 	grav = 0.5f;
-	andar = 0.2f;
+	andar = 0.4f;
 	figura->setFillColor(sf::Color::White);
 	figura->setTexture(textureParado);
 	figura->setTextureRect(animParado->getMolde());

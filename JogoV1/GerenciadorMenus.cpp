@@ -11,9 +11,12 @@ GerenciadorMenus::GerenciadorMenus()
 	comando = false; 
 	faseUm = false;
 	faseDois = false;
+	fimDeJogo = false;
 
 	pressionado = true;
 	//menu2 = false;
+
+	fundoMenu = new BackGround(0);
 }
 
 GerenciadorMenus::~GerenciadorMenus(){
@@ -46,9 +49,14 @@ void GerenciadorMenus::executarMenu(bool primeiro)
 			if (evento.type == sf::Event::Closed) {
 				menuPrincipal.getGgraf()->getWindow()->close();
 			}
+			if (sf::Event::Resized) {
+				menuPrincipal.getGgraf()->redimensiona();
+				break;
+			}
 		}
 
 		menuPrincipal.getGgraf()->getWindow()->clear(sf::Color::Black);
+		fundoMenu->fundoFase();
 
 		//alterna as opções
 		if (!comando) {
@@ -60,10 +68,13 @@ void GerenciadorMenus::executarMenu(bool primeiro)
 			}
 		}
 
+		verificaComando(relogioEnter);
+
 		//exibe e exexecuta de fato os menus
 		//se é um dos menus principais
 		if (Menu::getPrincipal()) {
 
+			//verificaComando(relogioEnter);
 			// verifica se é o primeiro menu o inicial
 			if (Menu::getPrincipal() && !menuPrincipal.getEscolherFase()) {
 				
@@ -71,7 +82,13 @@ void GerenciadorMenus::executarMenu(bool primeiro)
 				menuPrincipal.executar();
 
 				//recebe a opção delecionada e executa ela.
-				menuPrincipal.selecionar();
+				if (!Menu::getComando()) {
+					menuPrincipal.selecionar();
+
+					verificaComando(relogioEnter);
+					pressionado = true;
+				}
+
 			}
 
 			// se passou do menu iniciar, em seguida é o menu pra escolher a fase
@@ -79,6 +96,7 @@ void GerenciadorMenus::executarMenu(bool primeiro)
 
 				//delay de comando para evitar que a tecla seja pressionada mais de 1x
 				verificaComando(relogioEnter);
+				//pressionado = true;
 
 				//verifica se ja escolheu a fase ou não, tendo em vista que somente o menu de fase altera se é um ou dois jogadores (marcado por uma flag)
 				if (!Menu::getEscolherJogadores()) {
@@ -122,6 +140,43 @@ void GerenciadorMenus::executarMenu(bool primeiro)
 
 				}
 
+			}
+
+		}
+		// mostra o ranking
+		else if (menuPrincipal.getRank()) {
+
+			menuRanking.executar();
+
+			verificaComando(relogioEnter);
+
+			if (!Menu::getComando()) {
+				menuRanking.selecionar();
+
+				verificaComando(relogioEnter);
+				pressionado = true;
+			}
+
+			if(menuRanking.getVoltar())
+			{
+				menuPrincipal.setRank(false);
+				menuPrincipal.setPrincipal(true);
+				menuRanking.setVoltar(false);
+			}
+
+
+		}
+		else if (fimDeJogo) {
+			menuFimDeJogo.setDois(menuNumJogadores.getDoisJogadores());
+			menuFimDeJogo.executar();
+
+			verificaComando(relogioEnter);
+
+			if (!Menu::getComando()) {
+				menuFimDeJogo.selecionar();
+
+				verificaComando(relogioEnter);
+				pressionado = true;
 			}
 
 		}
@@ -169,6 +224,22 @@ void GerenciadorMenus::selecionadorOp() {
 			
 		}
 		
+	}
+	else if (menuPrincipal.getRank()) {
+		op = 0;
+		max = menuRanking.getNumOp() - 1;
+
+		movimentaOp(max);
+
+		menuRanking.setSelecionado(max, op);
+	}
+	else if (fimDeJogo) {
+		op = 0;
+		max = menuFimDeJogo.getNumOp() - 1;
+
+		movimentaOp(max);
+
+		menuFimDeJogo.setSelecionado(max, op);
 	}
 	else {
 
@@ -219,7 +290,7 @@ void GerenciadorMenus::atrasoComando(sf::Clock* relogio) {
 	sf::Time tempo;
 	tempo = relogio->getElapsedTime();
 
-	if (tempo.asSeconds() >= 0.5f)
+	if (tempo.asSeconds() >= 0.3f)
 	{
 		Menu::setComando(false);
 	}
@@ -242,3 +313,20 @@ bool GerenciadorMenus::getJogadorUm() {
 bool GerenciadorMenus::getJogadorDois() {
 	return menuNumJogadores.getDoisJogadores();
 }
+
+void GerenciadorMenus::setFimDeJogo(bool fim){
+	fimDeJogo = fim;
+}
+
+void GerenciadorMenus::setPontuacao1(int pont) {
+	menuFimDeJogo.setPontos1(pont);
+}
+
+void Menus::GerenciadorMenus::setPontuacao2(int pont){
+	menuFimDeJogo.setPontos2(pont);
+}
+
+void GerenciadorMenus::setGanhou(bool win) {
+	menuFimDeJogo.setGanhou(win);
+}
+

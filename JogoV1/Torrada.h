@@ -10,9 +10,6 @@ namespace Entidades {
 		public:
 			Torrada();
 
-			Inimigo* clone() {
-				return new Torrada(*this);
-			}
 			void configuraInimigo();
 			void executar();
 		};

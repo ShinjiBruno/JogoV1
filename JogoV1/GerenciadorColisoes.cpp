@@ -3,7 +3,7 @@
 
 using namespace Gerenciadores;
 
-GerenciadorColisoes::GerenciadorColisoes() {
+GerenciadorColisoes::GerenciadorColisoes(): qntInimVivos(0) {
 }
 
 GerenciadorColisoes::~GerenciadorColisoes() {
@@ -14,6 +14,7 @@ void GerenciadorColisoes::incluirInimigos(Entidade* inim) {
 	Inimigo* iniAux;
 	iniAux = static_cast<Inimigo*>(inim);
 	if (inim != NULL) {
+		qntInimVivos++;
 		LIs.push_back(iniAux);
 	}
 	else { return; }
@@ -55,8 +56,10 @@ void GerenciadorColisoes::colisaoJogInim() {
 	for (int i = 0; i < LJs.size(); i++) {
 		float jog_size_x = this->LJs[i]->getFigura()->getSize().x; //largura do jog
 		float jog_size_y = this->LJs[i]->getFigura()->getSize().y; //altura do jog
-		sf::Vector2f jogPos = this->LJs[i]->getFigura()->getPosition();
+
 		for (int j = 0; j < LIs.size(); j++) {
+			sf::Vector2f jogPos = this->LJs[i]->getFigura()->getPosition();
+
 			float inim_size_x = this->LIs[j]->getFigura()->getSize().x; //largura do inim
 			float inim_size_y = this->LIs[j]->getFigura()->getSize().y; //altura do inim
 			sf::Vector2f inimPos = LIs[j]->getFigura()->getPosition();
@@ -64,17 +67,22 @@ void GerenciadorColisoes::colisaoJogInim() {
 			float delta_x = abs(jogPos.x - inimPos.x);
 			float delta_y = abs(jogPos.y - inimPos.y);
 
-			float move_x = abs((inim_size_x / 2) - abs((jog_size_x / 2) - delta_x));
-			float move_y = abs((inim_size_y / 2) - abs((jog_size_y / 2) - delta_y));
+			float move_x;
+			float move_y;
+
+			move_x = abs((inim_size_x / 2) - abs((jogPos.x - jog_size_x / 2) - inimPos.x));
+			move_y = abs((inim_size_y / 2) - abs((jogPos.y - jog_size_y / 2) - inimPos.y));
 
 			//VERTICAL
 			if (((delta_y < (inim_size_y / 2) + (jog_size_y / 2)) && (delta_y >= jog_size_y / 2)) &&
 			(delta_x < (jog_size_x / 2) + (inim_size_x / 2))) {
-				LJs[i]->setChao(false);
 				if (jogPos.y <= inimPos.y) {
+					move_y = abs((inim_size_y / 2) - abs((jogPos.y + jog_size_y / 2) - inimPos.y));
+					LJs[i]->setPulo(true);
 					this->LJs[i]->getFigura()->move(sf::Vector2f(0.0f, -move_y));//-10.0f));
 					this->LJs[i]->setTempoLoop(LJs[i]->getTempoLoop()); //faz o jogador saltar 
 					LIs[j]->tomaDano(LJs[i]->getDanar());
+					if (LIs[j]->getNeutralizado()) { LJs[i]->aumentaPontuacao(LIs[j]->getPontuacao()); qntInimVivos -= 1; }
 					/*if (jogPos.x <= inimPos.x) {
 						this->LJs[i]->getFigura()->move(sf::Vector2f(0.0f, -move_y));//-10.0f));
 						this->LJs[i]->setTempoLoop(LJs[i]->getTempoLoop()); //faz o jogador saltar 

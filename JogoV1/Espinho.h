@@ -11,9 +11,6 @@ namespace Entidades {
 			Espinho();
 			~Espinho();
 
-			Obstaculo* clone() {
-				return new Espinho(*this);
-			}
 			void configuraObstaculo();
 			void executar();
 		};

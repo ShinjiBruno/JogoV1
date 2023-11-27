@@ -63,6 +63,9 @@ void Texto::mudaCor(string cor) {
 	else if (cor == "Transparent") {
 		this->txt.setFillColor(sf::Color::Transparent);
 	}
+	else if (cor == "Cyan") {
+		this->txt.setFillColor(sf::Color::Cyan);
+	}
 
 }
 
@@ -77,4 +80,8 @@ void Texto::setSelecionado(bool estado) {
 
 bool Texto::getSelecionado() {
 	return this->selecionado;
+}
+
+void Texto::mudaPalavra(string palavra) {
+	this->txt.setString(palavra);
 }

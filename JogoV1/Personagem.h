@@ -3,7 +3,7 @@
 #include "Animacao.h"
 #include <math.h>
 #define T_LOOP 0.0017f //intervalo de tempo hipotetico para cada "frame" do loop principal
-#define ALT_MAX_PULO 0.43f
+#define ALT_MAX_PULO 0.53f
 #define ALT_MAX_COL 0.0f
 #define ALT_MAX_QL 0.0f //queda livre
 

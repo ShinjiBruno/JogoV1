@@ -26,5 +26,6 @@ namespace Gerenciadores
 
 		void setSelecionado(bool estado);
 		bool getSelecionado();
+		void mudaPalavra(string palavra);
 	};
 }

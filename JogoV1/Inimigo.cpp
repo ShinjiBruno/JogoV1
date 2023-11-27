@@ -8,7 +8,7 @@ Inimigo::Inimigo(): detectaJog(false), visao(RAIO_VISAO) {
 	figura->setOrigin(sf::Vector2f(figura->getSize().x / 2, figura->getSize().y / 2));
 	figura->setPosition(sf::Vector2f(175.0f, 200.0f));
 	//figura->setFillColor(sf::Color::Blue);
-	grav = 0.1f;
+	grav = 1.0f;
 	andar = 0.05f;
 	visao.setOrigin(figura->getOrigin());
 	visao.setPosition(figura->getPosition());
@@ -25,6 +25,9 @@ void Inimigo::moveIni() {
 		else if (direc == 1) {
 			figura->move(sf::Vector2f(andar, 0));
 		}
+	}
+	if (figura->getPosition().y >= 1000.0f) {
+		neutralizado = true;
 	}
 
 	figura->move(sf::Vector2f(0, grav));

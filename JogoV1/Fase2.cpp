@@ -4,8 +4,9 @@
 using namespace Fases;
 
 Fase2::Fase2() {
+	fundo = new BackGround(2);
 	Mago* mago = new Mago();
-	raiva = rand() % 21;
+	raiva = static_cast<float>(rand() % 50);
 }
 
 Fase2::~Fase2() {
@@ -19,8 +20,9 @@ void Fase2::criaInimigos() {
 		//gerProto.registraPrototipoInim(i, new Torrada());
 		//Inimigo* inim = gerProto.criaInimigo(i);
 		Inimigo* inim = new Torrada();
-		
 		inim->configuraInimigo();
+		inim->setDanar(inim->getDanar() + raiva);
+
 		if (inim) {
 			lista->incluir(static_cast<Entidade*>(inim));
 			gerCol.incluirInimigos(inim);
@@ -33,6 +35,8 @@ void Fase2::criaInimigos() {
 		Mago* mago = new Mago();
 		Inimigo* inim = mago;
 		inim->configuraInimigo();
+		inim->setDanar(inim->getDanar() + raiva);
+
 		if (inim) {
 			lista->incluir(static_cast<Entidade*>(inim));
 			gerCol.incluirInimigos(inim);
@@ -74,10 +78,14 @@ void Fase2::criaObstaculos() {
 }
 
 void Fase2::percorreLista() {
+	fundo->fundoFase();
 	lista->percorrer();
 	gerCol.colisaoProjetil();
 	gerCol.colisaoJogInim();
 	gerCol.colisaoVisaoInimigo();
 	gerCol.colisaoPersoObst();
-
+	if (gerCol.getQntInim() == 0 || !gerCol.getJogVivos()) {
+		acabouJogo = true;
+		printf("acabou truta :(\n");
+	}
 }

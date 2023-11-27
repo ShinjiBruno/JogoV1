@@ -57,7 +57,7 @@
     <ClCompile Include="Plataforma.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="Slime.cpp">
+    <ClCompile Include="Gosma.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="Torrada.cpp">
@@ -102,6 +102,15 @@
     <ClCompile Include="GerenciadorMenus.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="BackGround.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuRanking.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuFimDeJogo.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ente.h">
@@ -140,13 +149,10 @@
     <ClInclude Include="GerenciadorColisoes.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="GerenciadorPrototipo.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
     <ClInclude Include="Plataforma.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="Slime.h">
+    <ClInclude Include="Gosma.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="Espinho.h">
@@ -194,6 +200,15 @@
     <ClInclude Include="GerenciadorMenus.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
+    <ClInclude Include="BackGround.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuRanking.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuFimDeJogo.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Thalia.otf" />
@@ -215,6 +230,333 @@
       <Filter>Arquivos de Recurso</Filter>
     </Image>
     <Image Include="jog-parado.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="chaoF1.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="espinho.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="platF1.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="gosma.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_00_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_01_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_02_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_03_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_04_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_05_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_06_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_07_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_08_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_09_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_10_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_11_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_12_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_13_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_14_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_15_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_16_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_17_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_18_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_19_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_20_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_21_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_22_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_23_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_24_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_25_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_26_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_27_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_28_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_29_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_30_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_31_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_32_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_33_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_34_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_35_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_36_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_37_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_38_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_39_delay-0.06s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_31_delay-0.08s.gif">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_31_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_30_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_29_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_28_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_27_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_26_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_25_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_24_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_23_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_22_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_21_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_20_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_19_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_18_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_17_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_16_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_15_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_14_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_13_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_12_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_11_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_10_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_09_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_08_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_07_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_06_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_05_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_04_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_03_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_02_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_01_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_00_delay-0.06s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_31_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_30_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_29_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_28_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_27_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_26_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_25_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_24_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_23_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_22_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_21_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_20_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_19_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_18_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_17_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_16_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_15_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_14_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_13_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_12_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_11_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_10_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_09_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_08_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_07_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_06_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_05_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_04_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_03_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_02_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_01_delay-0.08s.jpg">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="frame_00_delay-0.08s.jpg">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
   </ItemGroup>

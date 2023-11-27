@@ -22,6 +22,18 @@ Animacao::Animacao(sf::Texture* texture, sf::Vector2u corte, float tF)
 
 }
 
+Animacao::Animacao() {
+	ultDir = false;
+	clock.restart();
+	deltaTempo = 0.0f;
+	this->cortaImg = sf::Vector2u(1,1);
+	this->tempoFrame = 3.0f;
+
+	tempoSoma = 0.0f;
+	frameAtual.x = 0;
+	srand(time(NULL));
+}
+
 Animacao::~Animacao() {
 }
 
@@ -126,6 +138,7 @@ void Animacao::Atualiza(int gif, bool direc)
 }
 
 sf::Texture* Animacao::animacaoFundo(vector<sf::Texture*> vecTexture, int* posicao) {
+
 	deltaTempo = clock.getElapsedTime().asMilliseconds() / 10000.0f;
 
 	tempoSoma += deltaTempo;

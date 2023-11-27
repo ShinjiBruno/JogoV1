@@ -3,16 +3,13 @@
 
 namespace Entidades {
 	namespace Obstaculos {
-		class Slime : public Obstaculo {
+		class Gosma : public Obstaculo {
 		private:
 			float gosma;
 			static float dif;
 		public:
-			Slime();
-			~Slime();
-			Obstaculo* clone() {
-				return new Slime(*this);
-			}
+			Gosma();
+			~Gosma();
 			void configuraObstaculo();
 			void executar();
 		};

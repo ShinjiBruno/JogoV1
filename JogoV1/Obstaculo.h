@@ -15,7 +15,6 @@ namespace Entidades {
 
 			float getDanar() { return dano; }
 
-			virtual Obstaculo* clone() = 0;
 			virtual void configuraObstaculo() = 0;
 			virtual void executar() = 0;
 

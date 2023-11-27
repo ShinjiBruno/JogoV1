@@ -6,6 +6,7 @@
 #include <vector>
 #include <chrono>
 #include <iostream>
+#include <fstream>
 
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Graphics/Text.hpp>
@@ -62,16 +63,16 @@ namespace Menus
 		//void opSelecionador();
 
 		int getNumOp();
-		static bool getComecar();
-		static void setComecar(bool comec);
 		void setSelecionado(int max, int opcao);
 
+		static bool getComecar();
 		static bool getComando();
 		static bool getEscolherFase();
 		static bool getEscolherJogadores();
 		static bool getEscolherNome();
 		static bool getPrincipal();
 
+		static void setComecar(bool comec);
 		static void setComando(bool pressionado);
 		static void setPrincipal(bool primeiro);
 		static void setEscolherFase(bool escolhido);

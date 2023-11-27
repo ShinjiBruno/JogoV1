@@ -24,6 +24,9 @@ public:
 
 	void criaFase();
 
+	void telaFinalFaseUmJogador();
+	void telaFinalFaseDoisJogadores();
+
 	void configuracaoGraf();
 
 	void executarJogo();

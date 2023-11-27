@@ -4,6 +4,9 @@
 #include "MenuPrincipal.h"
 #include "MenuDeFases.h"
 #include "MenuNumeroJogadores.h"
+#include "MenuRanking.h"
+#include "MenuFimDeJogo.h"
+#include "BackGround.h"
 
 using namespace Menus;
 
@@ -15,6 +18,7 @@ namespace Menus {
 		bool faseUm;
 		bool faseDois;
 		bool pressionado;
+		bool fimDeJogo;
 
 
 		int op,i;
@@ -23,6 +27,10 @@ namespace Menus {
 		MenuPause menuPause;
 		MenuDeFases menuFase;
 		MenuNumeroJogadores menuNumJogadores;
+		MenuRanking menuRanking;
+		MenuFimDeJogo menuFimDeJogo;
+
+		BackGround* fundoMenu;
 
 	public:
 
@@ -43,5 +51,12 @@ namespace Menus {
 
 		bool getJogadorUm();
 		bool getJogadorDois();
+
+		void setFimDeJogo(bool fim);
+
+		void setPontuacao1(int pont);
+		void setPontuacao2(int pont);
+
+		void setGanhou(bool win);
 	};
 }

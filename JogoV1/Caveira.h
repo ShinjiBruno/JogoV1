@@ -9,10 +9,6 @@ namespace Entidades {
 			float odio;	//atributo da caveira 
 		public:
 			Caveira();
-
-			Inimigo* clone() {
-				return new Caveira(*this);
-			}
 			void configuraInimigo();
 			void executar();
 		};

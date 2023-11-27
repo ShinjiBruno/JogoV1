@@ -9,7 +9,7 @@ namespace Menus {
 	class MenuPrincipal : public Menu
 	{
 		private:
-
+			static bool rank;
 
 		public:
 			MenuPrincipal();
@@ -18,6 +18,8 @@ namespace Menus {
 			void executar();
 			void selecionar();
 
+			void setRank(bool ran);
+			static bool getRank();
 	};
 }
 

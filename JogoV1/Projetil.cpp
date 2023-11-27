@@ -7,7 +7,7 @@ Projetil::Projetil(): direc(-1) {
 	animProj = new Animacao(textureParado, sf::Vector2u(4, 1), 5.0f);
 
 	raivoso = static_cast<float>(rand() / RAND_MAX);
-	andar = 0.25f + raivoso;
+	andar = 0.5f + raivoso;
 	figura->setSize(sf::Vector2f(50.0f, 50.0f));
 	figura->setOrigin(sf::Vector2f(figura->getSize().x/2, figura->getSize().y/2));
 	figura->setFillColor(sf::Color::White);

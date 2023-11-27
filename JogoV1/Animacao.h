@@ -25,6 +25,7 @@ private:
 
 public:
 	Animacao(sf::Texture* texture, sf::Vector2u corte, float tF);
+	Animacao();
 	~Animacao();
 
 	sf::IntRect getMolde() { return molde; }

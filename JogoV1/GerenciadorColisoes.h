@@ -21,11 +21,25 @@ namespace Gerenciadores {
 		vector<Jogador*> LJs;	//vector de jogadores
 		vector<Projetil*> LPs; //vector de projeteis
 		list<Obstaculo*> LOs;		//lista de obstaculos
-
+		int qntInimVivos;
+		bool jogadoresVivos;
 	public:
 		GerenciadorColisoes();
 		~GerenciadorColisoes();
 		
+		int getQntInim() {  return qntInimVivos; }
+
+		bool getJogVivos() { 
+			if (LJs.size() > 1) {
+				jogadoresVivos = !(LJs[0]->getNeutralizado() * LJs[1]->getNeutralizado());
+				
+			}
+			else {
+				jogadoresVivos = !LJs[0]->getNeutralizado();
+			}
+			return jogadoresVivos;
+		}
+
 		void colisaoPersoObst();
 		void colisaoJogInim();
 		void colisaoVisaoInimigo();

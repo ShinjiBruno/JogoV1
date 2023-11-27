@@ -2,7 +2,7 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Window/Event.hpp"
 
-static const float ALT_MAX = 1000.0f;
+static const float ALT_MAX = 1500.0f;
 
 namespace Gerenciadores {
 	//implementado Singleton
