@@ -1,0 +1,20 @@
+Player sprites,
+thanks to Bonsaiheldin:
+https://opengameart.org/content/pixel-character-with-gun
+
+Sneaky Toast (inimigo1) sprite,
+thanks to David Harrington:
+https://opengameart.org/content/sneaky-toast
+
+Inimigo 2 sprite,
+thanks to HorusKDI:
+https://opengameart.org/content/6-color-dungeon-hero
+
+Boss sprites
+thanks to Balmer:
+https://opengameart.org/content/bosses-and-monsters-spritesheets-ars-notoria
+
+Platformer sprites
+thanks to Kenney:
+https://opengameart.org/content/platformer-art-complete-pack-often-updated
+
