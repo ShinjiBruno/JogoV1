@@ -1,6 +1,9 @@
 #include "MenuDeFases.h"
 
-MenuDeFases::MenuDeFases() {
+MenuDeFases::MenuDeFases()
+{
+	cout << "Inicializando Menu Fases" << endl;
+
 	meioX = static_cast<float>(posicaoCentro.x);
 
 	titulo = new Texto("CURSED++", TAMANHO_MAX_TEXT, meioX, posicaoCentro.y - static_cast<float>(posicaoJanela.y / 2.2), font);
@@ -11,14 +14,15 @@ MenuDeFases::MenuDeFases() {
 
 	titulo->mudaCor("Yellow");
 
-	listaOpcoes = { fase1, fase2, sair};
+	listaOpcoes = {fase1, fase2, sair};
 	nAlternativas = 3;
 
 	fasePrimeira = false;
 	faseSegunda = false;
 }
 
-MenuDeFases::~MenuDeFases() {
+MenuDeFases::~MenuDeFases()
+{
 
 	delete titulo;
 	delete fase1;
@@ -28,7 +32,8 @@ MenuDeFases::~MenuDeFases() {
 	listaOpcoes.clear();
 }
 
-void MenuDeFases::executar() {
+void MenuDeFases::executar()
+{
 
 	gGraf->desenharTexto(titulo->getTxt());
 	gGraf->desenharTexto(fase1->getTxt());
@@ -36,39 +41,43 @@ void MenuDeFases::executar() {
 	gGraf->desenharTexto(sair->getTxt());
 }
 
-void MenuDeFases::selecionar() {
+void MenuDeFases::selecionar()
+{
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+	{
 
-		if (getLista()[0]->getSelecionado()) {
+		if (getLista()[0]->getSelecionado())
+		{
 			fasePrimeira = true;
 			faseSegunda = false;
 			setEscolherJogadores(true);
 
-			//comecar = true;
-			
+			// comecar = true;
+
 			comando = true;
-			//voltar = false;
+			// voltar = false;
 		}
-		else if (getLista()[1]->getSelecionado()) {
+		else if (getLista()[1]->getSelecionado())
+		{
 			fasePrimeira = false;
 			faseSegunda = true;
 			setEscolherJogadores(true);
 
-			//comecar = true;
-			
+			// comecar = true;
+
 			comando = true;
-			//voltar = false;
+			// voltar = false;
 		}
-		else if (getLista()[2]->getSelecionado()) {
+		else if (getLista()[2]->getSelecionado())
+		{
 			setEscolherFase(false);
 			comecar = false;
-			
-			comando = true;
-			//gGraf->getWindow()->close();
-			//voltar = true;
-		}
 
+			comando = true;
+			// gGraf->getWindow()->close();
+			// voltar = true;
+		}
 	}
 }
 
@@ -77,6 +86,7 @@ bool Menus::MenuDeFases::getFasePrimeira()
 	return fasePrimeira;
 }
 
-bool MenuDeFases::getFaseSegunda() {
+bool MenuDeFases::getFaseSegunda()
+{
 	return faseSegunda;
 }

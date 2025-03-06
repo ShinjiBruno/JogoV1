@@ -7,6 +7,7 @@
 #include "Animacao.h"
 #include "BackGround.h"
 #include <stdlib.h>
+#include <iostream>
 
 #define NUM_OBST 3
 #define NUM_JOG 1
@@ -16,22 +17,27 @@
 using namespace Gerenciadores;
 using namespace Listas;
 
-namespace Fases {
-	class Fase {
+using namespace std;
+
+namespace Fases
+{
+	class Fase
+	{
 	protected:
-		BackGround* fundo;
+		BackGround *fundo;
 		GerenciadorColisoes gerCol;
-		ListaEntidades* lista;
+		ListaEntidades *lista;
 		bool acabouJogo;
+
 	public:
 		Fase();
 		~Fase();
 
-		//void criaTorradas();
+		// void criaTorradas();
 		bool getAcabouJogo() { return acabouJogo; }
-		void criaJogadores(Entidade* jog1, Entidade* jog2 = NULL);
-		virtual void criaInimigos()=0;
-		virtual void criaObstaculos()=0;
-		virtual void percorreLista()=0;
+		void criaJogadores(Entidade *jog1, Entidade *jog2 = NULL);
+		virtual void criaInimigos() = 0;
+		virtual void criaObstaculos() = 0;
+		virtual void percorreLista() = 0;
 	};
 }

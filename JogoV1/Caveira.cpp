@@ -4,12 +4,15 @@ using namespace Personagens;
 
 float Caveira::ult_increm = 0.0f;
 
-Caveira::Caveira() {
+Caveira::Caveira()
+{
 
 	textureParado = new sf::Texture();
-	if (textureParado->loadFromFile("Hero-walk.png")) {}
+	if (textureParado->loadFromFile("assets/Hero-walk.png"))
+	{
+	}
 	animParado = new Animacao(textureParado, sf::Vector2u(4, 1), 10.0f);
-	
+
 	std::mt19937 rng(std::random_device{}());
 	std::uniform_int_distribution<int> distribution(0, 100);
 
@@ -17,11 +20,11 @@ Caveira::Caveira() {
 	vida = 25.0f;
 	danar = 150.0f + odio;
 	pontuacao = 80.0f + odio;
-
 }
 
-void Caveira::configuraInimigo() {
-	std::mt19937 rng(std::random_device{}());						//gerador de numeros aleatorios (mto mais eficiente que rand())
+void Caveira::configuraInimigo()
+{
+	std::mt19937 rng(std::random_device{}()); // gerador de numeros aleatorios (mto mais eficiente que rand())
 	std::uniform_int_distribution<int> distribution(150, 500);
 	int aleatorio = distribution(rng);
 
@@ -29,8 +32,10 @@ void Caveira::configuraInimigo() {
 	ult_increm += aleatorio;
 }
 
-void Caveira::executar() {
-	if (!neutralizado) {
+void Caveira::executar()
+{
+	if (!neutralizado)
+	{
 		moveIni();
 		animParado->Atualiza(0, direc);
 		figura->setTexture(textureParado);
@@ -38,8 +43,8 @@ void Caveira::executar() {
 
 		this->gGraf->desenhar(*this->figura);
 	}
-	else {
+	else
+	{
 		this->figura->setPosition(sf::Vector2f(-1.0f, -1.0f));
-
 	}
 }

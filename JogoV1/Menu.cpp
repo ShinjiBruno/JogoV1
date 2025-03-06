@@ -9,16 +9,17 @@ bool Menu::escolherJogadores = false;
 bool Menu::escolherNome = false;
 bool Menu::comando = false;
 
-//classe abstrata
-Menu::Menu() {
+// classe abstrata
+Menu::Menu()
+{
 
-	//endereço da fonte
-	endereco = "Thalia.otf";
+	// endereï¿½o da fonte
+	endereco = "fonts/Thalia.otf";
 	font = new Font;
 
 	font->loadFromFile(endereco);
 
-	//definindo posições
+	// definindo posiï¿½ï¿½es
 	posicaoCentro = gGraf->getView()->getCenter();
 	posicaoJanela = gGraf->getView()->getSize();
 	tamJanela = gGraf->getWindow()->getSize();
@@ -26,42 +27,46 @@ Menu::Menu() {
 	nAlternativas = 0;
 	i = 0;
 
-	//seleciona o meio da janela(funciona apenas no menu principal)
+	// seleciona o meio da janela(funciona apenas no menu principal)
 	meioX = static_cast<float>(posicaoCentro.x);
 
 	comando = false;
-
 }
 
-Menu::~Menu() {
+Menu::~Menu()
+{
 }
 
-//muda a cor para representar a opção selecionada
-void Menu::representaSelecionado() {
+// muda a cor para representar a opï¿½ï¿½o selecionada
+void Menu::representaSelecionado()
+{
 	for (i = 0; i < getNumOp(); i++)
 	{
 		if (listaOpcoes[i]->getSelecionado())
 		{
 			listaOpcoes[i]->mudaCor("Blue");
 		}
-		else {
+		else
+		{
 			listaOpcoes[i]->mudaCor("White");
 		}
 	}
 }
 
-//percorre a lista dizendo qual é a opção selecionada.
-void Menu::setSelecionado(int max, int opcao) {
+// percorre a lista dizendo qual ï¿½ a opï¿½ï¿½o selecionada.
+void Menu::setSelecionado(int max, int opcao)
+{
 
-	for (i = 0; i <= max; i++) {
+	for (i = 0; i <= max; i++)
+	{
 		listaOpcoes[i]->setSelecionado(false);
 	}
 	listaOpcoes[opcao]->setSelecionado(true);
 	representaSelecionado();
-
 }
 
-vector<Texto*> Menu::getLista() {
+vector<Texto *> Menu::getLista()
+{
 	return listaOpcoes;
 }
 
@@ -74,61 +79,72 @@ void Menus::Menu::selecionar()
 {
 }
 
-GerenciadorGrafico* Menu::getGgraf()
+GerenciadorGrafico *Menu::getGgraf()
 {
 	return gGraf;
 }
 
-sf::Font* Menu::getFonte()
+sf::Font *Menu::getFonte()
 {
 	return font;
 }
 
-
-bool Menu::getComecar() {
+bool Menu::getComecar()
+{
 	return comecar;
 }
- 
-void Menu::setComecar(bool comec) {
+
+void Menu::setComecar(bool comec)
+{
 	comecar = comec;
 }
 
-bool Menu::getPrincipal() {
+bool Menu::getPrincipal()
+{
 	return principal;
 }
 
-bool Menu::getComando() {
+bool Menu::getComando()
+{
 	return comando;
 }
 
-bool Menu::getEscolherFase() {
+bool Menu::getEscolherFase()
+{
 	return escolherFase;
 }
 
-bool Menu::getEscolherJogadores() {
+bool Menu::getEscolherJogadores()
+{
 	return escolherJogadores;
 }
 
-bool Menu::getEscolherNome() {
+bool Menu::getEscolherNome()
+{
 	return escolherNome;
 }
 
-void Menu::setComando(bool pressionado) {
+void Menu::setComando(bool pressionado)
+{
 	comando = pressionado;
 }
 
-void Menu::setEscolherFase(bool escolhido) {
+void Menu::setEscolherFase(bool escolhido)
+{
 	escolherFase = escolhido;
 }
 
-void Menu::setEscolherJogadores(bool escolhido) {
+void Menu::setEscolherJogadores(bool escolhido)
+{
 	escolherJogadores = escolhido;
 }
 
-void Menu::setEscolherNome(bool escolhido) {
+void Menu::setEscolherNome(bool escolhido)
+{
 	escolherNome = escolhido;
 }
 
-void Menu::setPrincipal(bool primeiro) {
+void Menu::setPrincipal(bool primeiro)
+{
 	principal = primeiro;
 }

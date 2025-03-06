@@ -3,8 +3,10 @@
 
 using namespace std;
 
-int main() {
-	Jogo jogo;
+int main()
+{
+	cout << "Iniciando o jogo" << endl;
+	Jogo *jogo = new Jogo();
 	/******TESTE-verificar o funcionamento da lista******
 	Listas::Lista<int> listaEx;
 
@@ -14,6 +16,6 @@ int main() {
 	}
 	listaEx.executaLista();
 	/******************/
-	
+	delete jogo;
 	return 0;
 }

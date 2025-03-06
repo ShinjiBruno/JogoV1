@@ -1,36 +1,40 @@
 #include "Fase.h"
 using namespace Fases;
 
-Fase::Fase(): acabouJogo(false) {
+Fase::Fase() : acabouJogo(false)
+{
+	cout << "Inicializando Fase" << endl;
 	lista = new ListaEntidades();
-	Obstaculo* plat = new Plataforma();
-	lista->incluir(static_cast<Entidade*>(plat));
+	Obstaculo *plat = new Plataforma();
+	lista->incluir(static_cast<Entidade *>(plat));
 	gerCol.incluirObstaculos(plat);
-	
-	//criaTorradas();
+
+	// criaTorradas();
 
 	/*
 	gerProto.registraPrototipoObst(2, new ObstaculoDanoso());
 	gerProto.registraPrototipoObst(3, new ObstaculoProjetil());*/
 }
 
-Fase::~Fase() {
-
+Fase::~Fase()
+{
 }
 
-void Fase::criaJogadores(Entidade* jog1, Entidade* jog2) {
-	if (jog2 == NULL) {
+void Fase::criaJogadores(Entidade *jog1, Entidade *jog2)
+{
+	if (jog2 == NULL)
+	{
 		lista->incluir(jog1);
 		gerCol.incluirJogadores(jog1);
 	}
-	else {
+	else
+	{
 		lista->incluir(jog1);
 		lista->incluir(jog2);
 		gerCol.incluirJogadores(jog1);
 		gerCol.incluirJogadores(jog2);
 	}
 }
-
 
 /*void Fase::criaInimigos() {
 	int numST = 8 + rand() % 5; //sneaky toast

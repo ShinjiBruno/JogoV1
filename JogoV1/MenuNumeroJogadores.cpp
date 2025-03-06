@@ -2,6 +2,8 @@
 
 MenuNumeroJogadores::MenuNumeroJogadores()
 {
+	cout << "Inicializando Menu Numero Jogadores" << endl;
+
 	titulo = new Texto("CURSED++", TAMANHO_MAX_TEXT, meioX, posicaoCentro.y - static_cast<float>(posicaoJanela.y / 2.2), font);
 
 	jogadorUm = new Texto("Um Jogador", TAMANHO_TEXT, meioX, posicaoCentro.y - static_cast<float>(posicaoJanela.y) / 3 + TAMANHO_TEXT, font);
@@ -10,7 +12,7 @@ MenuNumeroJogadores::MenuNumeroJogadores()
 
 	titulo->mudaCor("Yellow");
 
-	listaOpcoes = { jogadorUm, jogadorDois, sair };
+	listaOpcoes = {jogadorUm, jogadorDois, sair};
 	nAlternativas = 3;
 
 	doisJogadores = false;
@@ -35,9 +37,11 @@ void Menus::MenuNumeroJogadores::executar()
 
 void Menus::MenuNumeroJogadores::selecionar()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+	{
 
-		if (getLista()[0]->getSelecionado()) {
+		if (getLista()[0]->getSelecionado())
+		{
 			umJogador = true;
 			doisJogadores = false;
 
@@ -45,7 +49,8 @@ void Menus::MenuNumeroJogadores::selecionar()
 			comecar = true;
 			comando = true;
 		}
-		else if (getLista()[1]->getSelecionado()) {
+		else if (getLista()[1]->getSelecionado())
+		{
 			umJogador = false;
 			doisJogadores = true;
 
@@ -53,14 +58,14 @@ void Menus::MenuNumeroJogadores::selecionar()
 			comecar = true;
 			comando = true;
 		}
-		else if (getLista()[2]->getSelecionado()) {
+		else if (getLista()[2]->getSelecionado())
+		{
 			setEscolherJogadores(false);
-			
+
 			comecar = false;
 			comando = true;
 		}
 	}
-
 }
 
 bool Menus::MenuNumeroJogadores::getUmJogadores()
@@ -72,5 +77,3 @@ bool Menus::MenuNumeroJogadores::getDoisJogadores()
 {
 	return doisJogadores;
 }
-
-

@@ -2,42 +2,49 @@
 #include "Personagem.h"
 #include "Obstaculo.h"
 #include <string>
+#include <iostream>
+#include <filesystem>
 #define VIDA 1750.0f
 
 using namespace Entidades;
 using namespace Obstaculos;
 
-namespace Entidades {
-	namespace Personagens {
-		class Jogador : public Personagem {
+namespace Entidades
+{
+	namespace Personagens
+	{
+		class Jogador : public Personagem
+		{
 		private:
 			static int numJog;
 			int jogador;
 
 			std::string nome;
-			sf::RectangleShape barraVida; //barra verde q vai diminuindo conforme o dano que vai lenvando
-			sf::RectangleShape barraDano; //barra verelha 
-			sf::Texture* texAndando;
+			sf::RectangleShape barraVida; // barra verde q vai diminuindo conforme o dano que vai lenvando
+			sf::RectangleShape barraDano; // barra verelha
+			sf::Texture *texAndando;
 			bool pulo;
-			bool afetado; //verifica se esta afetado por algum efeito negativo
+			bool afetado; // verifica se esta afetado por algum efeito negativo
 
 		public:
 			Jogador();
 			~Jogador();
-		
 
-			void tomaDano(float dano) {
-				if (vida - dano > 0.0f) {
+			void tomaDano(float dano)
+			{
+				if (vida - dano > 0.0f)
+				{
 					barraVida.setSize(sf::Vector2f(barraVida.getSize().x - dano * (50.0f / VIDA), barraVida.getSize().y));
 					vida -= dano;
 				}
-				else {
+				else
+				{
 					barraVida.setSize(sf::Vector2f(0.1f, barraVida.getSize().y));
 					neutralizado = true;
 				}
 			}
 
-			void efeitoNegativo(int id, Obstaculo* ob); //id dos obstaculos. Para cada caso tem efeito diferente
+			void efeitoNegativo(int id, Obstaculo *ob); // id dos obstaculos. Para cada caso tem efeito diferente
 			void aumentaPontuacao(int ponto) { pontuacao += ponto; }
 			void setAfetado(bool a) { afetado = a; }
 			void setPulo(bool b) { pulo = b; }
